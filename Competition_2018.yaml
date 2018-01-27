@@ -105,7 +105,7 @@ Children:
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
               name: Inverted, validators: null, value: false}
           Base: Speed Controller
-          Name: SpeedR1
+          Name: DriveR1
         - Children: []
           Properties:
             Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -123,7 +123,7 @@ Children:
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
               name: Inverted, validators: null, value: false}
           Base: Speed Controller
-          Name: SpeedR2
+          Name: DriveR2
         Properties:
           SpeedController4: !!robotbuilder.data.properties.ChildSelectionProperty {
             default: null, name: SpeedController4, type: PIDOutput, validators: null,
@@ -136,13 +136,13 @@ Children:
             name: SpeedController2
             type: PIDOutput
             validators: &id010 [SpeedControllerGroup, ChildDropdownSelected]
-            value: Chassis SpeedR2
+            value: Chassis DriveR2
           SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
             default: 0
             name: SpeedController1
             type: PIDOutput
             validators: &id011 [SpeedControllerGroup, ChildDropdownSelected]
-            value: Chassis SpeedR1
+            value: Chassis DriveR1
         Base: Speed Controller Group
         Name: RightDrive
       - Children:
@@ -163,7 +163,7 @@ Children:
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
               name: Inverted, validators: null, value: false}
           Base: Speed Controller
-          Name: SpeedL1
+          Name: DriveL1
         - Children: []
           Properties:
             Type: !!robotbuilder.data.properties.ChoicesProperty
@@ -181,7 +181,7 @@ Children:
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
               name: Inverted, validators: null, value: false}
           Base: Speed Controller
-          Name: SpeedL2
+          Name: DriveL2
         Properties:
           SpeedController4: !!robotbuilder.data.properties.ChildSelectionProperty {
             default: null, name: SpeedController4, type: PIDOutput, validators: null,
@@ -194,13 +194,13 @@ Children:
             name: SpeedController2
             type: PIDOutput
             validators: *id010
-            value: Chassis SpeedL2
+            value: Chassis DriveL2
           SpeedController1: !!robotbuilder.data.properties.ChildSelectionProperty
             default: 0
             name: SpeedController1
             type: PIDOutput
             validators: *id011
-            value: Chassis SpeedL1
+            value: Chassis DriveL1
         Base: Speed Controller Group
         Name: LeftDrive
       Properties:
@@ -241,6 +241,84 @@ Children:
         value: []
     Base: Subsystem
     Name: Chassis
+  - Children:
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: &id012 ['0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10',
+            '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22',
+            '23', '24', '25', '26', '27', '28', '29', '30', '31']
+          default: '2'
+          name: CAN ID
+          validators: &id013 [CANID]
+          value: '0'
+      Base: Talon SRX
+      Name: Right
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id012
+          default: '2'
+          name: CAN ID
+          validators: *id013
+          value: '1'
+      Base: Talon SRX
+      Name: Left
+    - Children: []
+      Properties:
+        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          default: '0'
+          name: Input Channel (Analog)
+          validators: [AnalogInput]
+          value: '1'
+      Base: Analog Input
+      Name: Angle
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: &id014 []
+    Base: Subsystem
+    Name: Intake
+  - Children:
+    - Children: []
+      Properties:
+        CAN ID: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id012
+          default: '2'
+          name: CAN ID
+          validators: *id013
+          value: '2'
+      Base: Talon SRX
+      Name: Lift
+    Properties:
+      Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Send to SmartDashboard, validators: null, value: false}
+      Default command parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Default command parameters
+        validators: null
+        value: []
+      Default Command: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Default Command, type: Command, validators: null, value: None}
+      Constants: !!robotbuilder.data.properties.ConstantsProperty
+        default: []
+        name: Constants
+        validators: null
+        value: *id014
+    Base: Subsystem
+    Name: Elevator
   Properties: {}
   Base: Subsystems
   Name: Subsystems
