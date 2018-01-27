@@ -78,7 +78,7 @@ public class RobotMap
         
         chassisDriveTrain = new DifferentialDrive(chassisLeftDrive, chassisRightDrive);
         LiveWindow.addActuator("Chassis", "DriveTrain", chassisDriveTrain);
-        chassisDriveTrain.setSafetyEnabled(true);
+        chassisDriveTrain.setSafetyEnabled(false);
         chassisDriveTrain.setExpiration(0.1);
         chassisDriveTrain.setMaxOutput(1.0);
 
