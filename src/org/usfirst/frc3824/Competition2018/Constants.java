@@ -12,4 +12,8 @@ public final class Constants
 	public static double IntakePIDParamP = 0;
 	public static double IntakePIDParamI = 0;
 	public static double IntakePIDParamD = 0;
+	
+	// Autonomous constants
+	public static double AutoLineDriveDistance = 10;
+	public static double AutoLineDrivePower = 0.5;
 }
