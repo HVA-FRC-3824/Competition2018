@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj.AnalogGyro;
 import edu.wpi.first.wpilibj.CounterBase.EncodingType;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.PIDController;
+import edu.wpi.first.wpilibj.PIDOutput;
 import edu.wpi.first.wpilibj.PIDSourceType;
 import edu.wpi.first.wpilibj.PWMVictorSPX;
 import edu.wpi.first.wpilibj.SpeedController;
@@ -54,6 +56,17 @@ public class Chassis extends Subsystem
 
 	private double						m_distanceTraveled;
 
+	// Parameter used for drive while running under PID Control. The values
+	// not set by the controller constructor can be set by a command directly
+	private double					m_magnitude;
+
+	// PID controller for driving based on Gyro
+	private PIDController			angleGyroPID			= new PIDController(Constants.DrivetrainDriveStraight_P,
+			                                                                    Constants.DrivetrainDriveStraight_I, 
+			                                                                    Constants.DrivetrainDriveStraight_D, 
+			                                                                    gyro, new AnglePIDOutput());
+
+
 	public void Chassis()
 	{
 		leftDriveEncoder.setDistancePerPulse(Constants.ChassisEncoderDistancePerPulse);
@@ -80,9 +93,34 @@ public class Chassis extends Subsystem
 
 	}
 
-	// Put methods for controlling this subsystem
-	// here. Call these from Commands.
+	// ************************************
+	// Methods to call from commands
+	// ************************************
 
+	/*
+	 * Method to stop the chassis drive motors and disable/reset pids
+	 */
+	public void resetChassisPIDcontrollersAndEncoders()
+	{
+		// Initialize the gyro PID controller
+		angleGyroPID.disable();
+		angleGyroPID.reset();
+		
+		// Reset the gyro angle
+		gyro.reset();
+
+		// Clear the drive magnitude
+		// Note: The calling routine must reset the magnitude to the desired value
+		m_magnitude = 0;
+
+		// Reset the drive encoders
+		leftDriveEncoder.reset();
+		rightDriveEncoder.reset();
+
+		// Ensure the robot is stopped
+		driveTrain.arcadeDrive(0, 0);
+	}
+	
 	/**
 	 * Method to control the drive through the specified joystick
 	 */
@@ -117,6 +155,23 @@ public class Chassis extends Subsystem
 	}
 
 	/**
+	 * Method to configure the gyro based turn/drive straight PID controller
+	 */
+	public void turnAnglePID(double desiredHeading, double power)
+	{
+		// Turn to the desired heading current heading
+		startGyroPID(Constants.TurnAngle_P, 
+				     Constants.TurnAngle_I,
+					 Constants.TurnAngle_D, 
+					 Constants.TurnAngle_MinimumOutput,
+					 Constants.TurnAngle_MaximumOutput, desiredHeading);
+		
+		// Update the drive power
+		m_magnitude = power;
+	}
+
+
+	/**
 	 * getDistanceTraveled - return the distance since the last position reset
 	 * 
 	 * @return (double) distance traveled in feet
@@ -148,8 +203,119 @@ public class Chassis extends Subsystem
 		driveTrain.arcadeDrive(power, 0.0);
 	}
 
+	/**
+	 * Stop the robot
+	 */
 	public void stop()
 	{
 		driveTrain.stopMotor();
 	}
+	
+	/**
+	 * Class declaration for the PIDOutput
+	 * - When a PID is provided this class, the pidWrite of this call will get called
+	 *   on each iteration
+	 * - This class is used to turn the robot under PID control
+	 */
+	private class AnglePIDOutput implements PIDOutput
+	{
+		/**
+		 * Virtual function to receive the PID output and set the drive direction
+		 */
+		public void pidWrite(double PIDoutput)
+		{
+			// Drive the robot given the speed and direction
+			// Note: The Arcade drive expects a joystick which is negative forward
+			driveTrain.arcadeDrive(-m_magnitude, PIDoutput, false);
+		}
+	}
+
+	/**
+	 * Class declaration for the PIDOutput
+	 * - When a PID is provided this class, the pidWrite of this call will get called
+	 *   on each iteration
+	 * - This class is used to set the speed of the right drive while under PID control
+	 */
+	public class EncoderPIDOutputRight implements PIDOutput
+	{
+		/**
+		 * Virtual function to receive the PID output and set the drive direction
+		 */
+		public void pidWrite(double PIDoutput)
+		{
+			rightDrive.set(PIDoutput + m_magnitude);
+
+			// SmartDashboard.putNumber("Right Output", PIDoutput);
+		}
+	}
+
+	/**
+	 * Class declaration for the PIDOutput
+	 * - When a PID is provided this class, the pidWrite of this call will get called
+	 *   on each iteration
+	 * - This class is used to set the speed of the left drive while under PID control
+	 */
+	public class EncoderPIDOutputLeft implements PIDOutput
+	{
+		/**
+		 * Virtual function to receive the PID output and set the drive direction 
+		 */
+		public void pidWrite(double PIDoutput)
+		{
+			leftDrive.set(-PIDoutput + m_magnitude);
+
+			// SmartDashboard.putNumber("Left Output", -PIDoutput);
+		}
+	}
+
+	// ************************************
+	// Methods to get values from chassis sensors
+	// ************************************
+	/**
+	 * Method to determine if the gyro angle is within the specified range
+	 */
+	public boolean gyroWithin(double threshold)
+	{
+		// SmartDashboard.putNumber("Error", angleGyroPID.getError());
+		
+		// Return if the gyro is within the specified range
+		return Math.abs(angleGyroPID.getError()) < threshold;
+	}
+
+
+	// ************************************
+	// Private helpers
+	// ************************************
+
+	/**
+	 * set chassis to be under PID control
+	 * 
+	 * @param P
+	 * @param I
+	 * @param D
+	 * @param minimumOutput
+	 * @param maximumOutput
+	 * @param tolerance
+	 * @param desiredHeading
+	 *            (relative to current heading, 0 is keep current heading)
+	 */
+	private void startGyroPID(double P, double I, double D, double minimumOutput, double maximumOutput, double desiredHeading)
+	{
+		// reset other PIDS
+		resetChassisPIDcontrollersAndEncoders();
+
+		// Initialize the Gryo angle PID parameters
+		angleGyroPID.setPID(P, I, D);
+
+		// Set the desired chassis heading
+		angleGyroPID.setSetpoint(desiredHeading);
+
+		// Limit the output power when turning
+		angleGyroPID.setOutputRange(minimumOutput, maximumOutput);
+
+		// Enable the Gyro PID
+		angleGyroPID.enable();
+	}
+
+
 }
