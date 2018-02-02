@@ -27,7 +27,7 @@ Children:
           validators: &id002 [DigitalChannel]
           value: '0'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 1.0}
+          name: Distance Per Pulse, validators: null, value: 0.00632911}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: &id003 [kDisplacement, kRate]
           default: kRate
@@ -61,7 +61,7 @@ Children:
           validators: *id002
           value: '2'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 1.0}
+          name: Distance Per Pulse, validators: null, value: 0.00632911}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: kRate
@@ -75,7 +75,7 @@ Children:
           validators: null
           value: k4X
         Reverse Direction: !!robotbuilder.data.properties.BooleanProperty {default: false,
-          name: Reverse Direction, validators: null, value: false}
+          name: Reverse Direction, validators: null, value: true}
         Channel B Channel (Digital): !!robotbuilder.data.properties.ChoicesProperty
           choices: *id005
           default: '0'
@@ -103,7 +103,7 @@ Children:
               validators: &id009 [PWMOutput]
               value: '0'
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-              name: Inverted, validators: null, value: false}
+              name: Inverted, validators: null, value: true}
           Base: Speed Controller
           Name: DriveR1
         - Children: []
@@ -121,7 +121,7 @@ Children:
               validators: *id009
               value: '1'
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-              name: Inverted, validators: null, value: false}
+              name: Inverted, validators: null, value: true}
           Base: Speed Controller
           Name: DriveR2
         Properties:
@@ -161,7 +161,7 @@ Children:
               validators: *id009
               value: '2'
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-              name: Inverted, validators: null, value: false}
+              name: Inverted, validators: null, value: true}
           Base: Speed Controller
           Name: DriveL1
         - Children: []
@@ -179,7 +179,7 @@ Children:
               validators: *id009
               value: '3'
             Inverted: !!robotbuilder.data.properties.BooleanProperty {default: false,
-              name: Inverted, validators: null, value: false}
+              name: Inverted, validators: null, value: true}
           Base: Speed Controller
           Name: DriveL2
         Properties:
@@ -524,6 +524,28 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: JoystickDrive
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: Chassis}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id016 []
+        name: Parameter presets
+        validators: null
+        value: *id016
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: true}
+    Base: Command
+    Name: ChassisResetEncoders
   Properties: {}
   Base: Commands
   Name: Commands

@@ -122,4 +122,10 @@ public class Intake extends Subsystem
 		left.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
 		right.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
 	}
+	
+	//Start of getRightIntakeWheelRPM
+	/*public int getRightIntakeWheelRPM()
+	{
+	    right.get();
+	}*/
 }

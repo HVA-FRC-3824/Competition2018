@@ -59,27 +59,27 @@ public class RobotMap
         chassisGyro.setSensitivity(0.007);
         chassisLeftDriveEncoder = new Encoder(0, 1, false, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "LeftDriveEncoder", chassisLeftDriveEncoder);
-        chassisLeftDriveEncoder.setDistancePerPulse(1.0);
+        chassisLeftDriveEncoder.setDistancePerPulse(0.00632911);
         chassisLeftDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
-        chassisRightDriveEncoder = new Encoder(2, 3, false, EncodingType.k4X);
+        chassisRightDriveEncoder = new Encoder(2, 3, true, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "RightDriveEncoder", chassisRightDriveEncoder);
-        chassisRightDriveEncoder.setDistancePerPulse(1.0);
+        chassisRightDriveEncoder.setDistancePerPulse(0.00632911);
         chassisRightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         chassisDriveR1 = new PWMVictorSPX(0);
         LiveWindow.addActuator("Chassis", "DriveR1", (PWMVictorSPX) chassisDriveR1);
-        chassisDriveR1.setInverted(false);
+        chassisDriveR1.setInverted(true);
         chassisDriveR2 = new PWMVictorSPX(1);
         LiveWindow.addActuator("Chassis", "DriveR2", (PWMVictorSPX) chassisDriveR2);
-        chassisDriveR2.setInverted(false);
+        chassisDriveR2.setInverted(true);
         chassisRightDrive = new SpeedControllerGroup(chassisDriveR1, chassisDriveR2  );
         LiveWindow.addActuator("Chassis", "RightDrive", chassisRightDrive);
         
         chassisDriveL1 = new PWMVictorSPX(2);
         LiveWindow.addActuator("Chassis", "DriveL1", (PWMVictorSPX) chassisDriveL1);
-        chassisDriveL1.setInverted(false);
+        chassisDriveL1.setInverted(true);
         chassisDriveL2 = new PWMVictorSPX(3);
         LiveWindow.addActuator("Chassis", "DriveL2", (PWMVictorSPX) chassisDriveL2);
-        chassisDriveL2.setInverted(false);
+        chassisDriveL2.setInverted(true);
         chassisLeftDrive = new SpeedControllerGroup(chassisDriveL1, chassisDriveL2  );
         LiveWindow.addActuator("Chassis", "LeftDrive", chassisLeftDrive);
         
