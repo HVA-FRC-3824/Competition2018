@@ -3,9 +3,6 @@ package org.usfirst.frc3824.Competition2018;
 public final class Constants
 {
     // Chassis constants
-    public static double ChassisEncoderDistancePerPulse   = 0.01;   // distance
-                                                                    // per pulse
-                                                                    // in FEET
     public static double ChassisTurnThreshold             = 0.0;
 
     // ***************************************************************************************
@@ -36,6 +33,16 @@ public final class Constants
     public static double IntakePIDParamI                  = 0.0;
     public static double IntakePIDParamD                  = 0.0;
 
+    // ***************************************************************************************
+    // Elevator Constants
+    public static double ElevatorVoltageUp                  = 0.5;
+    public static double ElevatorVoltageDown                = -0.5;
+    
+    public static double ElevatorPIDParamF                  = 0.0;
+    public static double ElevatorPIDParamP                  = 0.0;
+    public static double ElevatorPIDParamI                  = 0.0;
+    public static double ElevatorPIDParamD                  = 0.0;
+    
     // ***************************************************************************************
     // Autonomous constants
     public static double AutoLineDriveDistance            = 10.0;

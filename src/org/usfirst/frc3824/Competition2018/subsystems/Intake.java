@@ -48,7 +48,7 @@ public class Intake extends Subsystem
     	left.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
     	left.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
     	left.configPeakOutputForward(0.5, Constants.TalonInitialCommunicationTimeout);
-    	left.configPeakOutputReverse(0.5, Constants.TalonInitialCommunicationTimeout);
+    	left.configPeakOutputReverse(-0.5, Constants.TalonInitialCommunicationTimeout);
     	
     	left.config_kF(0, Constants.IntakePIDParamF, Constants.TalonInitialCommunicationTimeout);
     	left.config_kP(0, Constants.IntakePIDParamP, Constants.TalonInitialCommunicationTimeout);
@@ -61,7 +61,7 @@ public class Intake extends Subsystem
     	right.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
     	right.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
     	right.configPeakOutputForward(0.5, Constants.TalonInitialCommunicationTimeout);
-    	right.configPeakOutputReverse(0.5, Constants.TalonInitialCommunicationTimeout);
+    	right.configPeakOutputReverse(-0.5, Constants.TalonInitialCommunicationTimeout);
     	
     	right.config_kF(0, Constants.IntakePIDParamF, Constants.TalonInitialCommunicationTimeout);
     	right.config_kP(0, Constants.IntakePIDParamP, Constants.TalonInitialCommunicationTimeout);
@@ -85,7 +85,8 @@ public class Intake extends Subsystem
 	public void periodic()
 	{
 		// Put code here to be run every loop
-		if (shouldStop()) setSpeed(0);
+		if (shouldStop()) 
+		    setSpeed(0);
 	}
 
 	// Put methods for controlling this subsystem

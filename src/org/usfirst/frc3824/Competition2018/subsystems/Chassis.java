@@ -67,8 +67,7 @@ public class Chassis extends Subsystem
 
 	public void Chassis()
 	{
-		leftDriveEncoder.setDistancePerPulse(Constants.ChassisEncoderDistancePerPulse);
-		rightDriveEncoder.setDistancePerPulse(Constants.ChassisEncoderDistancePerPulse);
+	    
 	}
 
 	@Override
@@ -237,6 +236,11 @@ public class Chassis extends Subsystem
 		driveTrain.stopMotor();
 	}
 
+	public double getAngleTurnError()
+	{
+	    return angleGyroPID.getError();
+	}
+	
 	/**
 	 * Class declaration for the PIDOutput - When a PID is provided this class,
 	 * the pidWrite of this call will get called on each iteration - This class
