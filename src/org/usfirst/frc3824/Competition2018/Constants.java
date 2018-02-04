@@ -35,14 +35,14 @@ public final class Constants
 
     // ***************************************************************************************
     // Elevator Constants
-    public static double ElevatorVoltageUp                  = 0.5;
-    public static double ElevatorVoltageDown                = -0.5;
-    
-    public static double ElevatorPIDParamF                  = 0.0;
-    public static double ElevatorPIDParamP                  = 0.0;
-    public static double ElevatorPIDParamI                  = 0.0;
-    public static double ElevatorPIDParamD                  = 0.0;
-    
+    public static double ElevatorVoltageUp                = 0.5;
+    public static double ElevatorVoltageDown              = -0.5;
+
+    public static double ElevatorPIDParamF                = 0.1;
+    public static double ElevatorPIDParamP                = 0.01;
+    public static double ElevatorPIDParamI                = 0.0001;
+    public static double ElevatorPIDParamD                = 0.0;
+
     // ***************************************************************************************
     // Autonomous constants
     public static double AutoLineDriveDistance            = 10.0;
