@@ -115,7 +115,8 @@ public class Chassis extends Subsystem
         gyro.reset();
 
         // Clear the drive magnitude
-        // Note: The calling routine must reset the magnitude to the desired value
+        // Note: The calling routine must reset the magnitude to the desired
+        // value
         m_magnitude = 0;
 
         // Reset the drive encoders
@@ -139,7 +140,7 @@ public class Chassis extends Subsystem
         {
             // Remember to preserve direction, it is lost when squaring
             twist = -1.0 * (twist * twist);
-        } 
+        }
         else
         {
             twist = twist * twist;
@@ -147,12 +148,12 @@ public class Chassis extends Subsystem
 
         // Square forward/backward to decrease sensitivity
         double moveValue = stick.getY();
-        
+
         if (moveValue < 0)
         {
             // Remember to preserve direction, it is lost when squaring
             moveValue = -1.0 * (moveValue * moveValue);
-        } 
+        }
         else
         {
             moveValue = moveValue * moveValue;
@@ -330,7 +331,7 @@ public class Chassis extends Subsystem
     /*********************************************************************
      * Methods to get values from chassis sensors
      *********************************************************************/
-    
+
     /*********************************************************************
      * Method to determine if the gyro angle is within the specified range
      *********************************************************************/

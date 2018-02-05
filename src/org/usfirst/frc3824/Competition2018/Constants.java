@@ -2,6 +2,10 @@ package org.usfirst.frc3824.Competition2018;
 
 public final class Constants
 {
+    // TalonSRX set timeout (ms)
+    public static int    TalonInitialCommunicationTimeout = 10;
+
+    // ***************************************************************************************
     // Chassis constants
     public static double ChassisTurnThreshold             = 0.0;
 
@@ -22,22 +26,38 @@ public final class Constants
     public static double TurnAngle_MaximumOutput          = 0.4;
 
     // ***************************************************************************************
-    // Intake constants
-    public static int    TalonInitialCommunicationTimeout = 10;     // timeout
-                                                                    // during
-                                                                    // setup (in
-                                                                    // ms)
+    // Intake wheel constants
 
-    public static double IntakePIDParamF                  = 0.0;
-    public static double IntakePIDParamP                  = 0.0;
-    public static double IntakePIDParamI                  = 0.0;
-    public static double IntakePIDParamD                  = 0.0;
+    public static double IntakeWheelPIDParamF             = 0.0;
+    public static double IntakeWheelPIDParamP             = 0.0;
+    public static double IntakeWheelPIDParamI             = 0.0;
+    public static double IntakeWheelPIDParamD             = 0.0;
+
+    public static double IntakeWheelPIDMaximum            = 0.2;
+    public static double IntakeWheelPIDMinimum            = -0.2;
+
+    // ***************************************************************************************
+    // Intake angle constants
+
+    public static double EncoderMinusDegrees              = 880;
+    public static double EncoderPlusDegrees               = 128;
+
+    public static double IntakeAnglePIDParamF             = 0.0;
+    public static double IntakeAnglePIDParamP             = 1.0;
+    public static double IntakeAnglePIDParamI             = 0.0;
+    public static double IntakeAnglePIDParamD             = 0.0;
+
+    public static double IntakeAnglePIDMaximum            = 0.2;
+    public static double IntakeAnglePIDMinimum            = -0.2;
 
     // ***************************************************************************************
     // Elevator Constants
+
+    // Voltage control
     public static double ElevatorVoltageUp                = 0.5;
     public static double ElevatorVoltageDown              = -0.5;
 
+    // PID control
     public static double ElevatorPIDParamF                = 0.1;
     public static double ElevatorPIDParamP                = 0.01;
     public static double ElevatorPIDParamI                = 0.0001;
