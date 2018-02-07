@@ -27,9 +27,11 @@ public final class Constants
 
     // ***************************************************************************************
     // Intake wheel constants
-
+    
+    public static double IntakeRPM                        = 300;
+    
     public static double IntakeWheelPIDParamF             = 0.0;
-    public static double IntakeWheelPIDParamP             = 0.0;
+    public static double IntakeWheelPIDParamP             = 10.0;
     public static double IntakeWheelPIDParamI             = 0.0;
     public static double IntakeWheelPIDParamD             = 0.0;
 
@@ -39,11 +41,11 @@ public final class Constants
     // ***************************************************************************************
     // Intake angle constants
 
-    public static double EncoderMinusDegrees              = 880;
-    public static double EncoderPlusDegrees               = 128;
+    public static double IntakeAngleEncoderMinusDegrees   = 180000;
+    public static double IntakeAngleEncoderPlusDegrees    = 0;
 
     public static double IntakeAnglePIDParamF             = 0.0;
-    public static double IntakeAnglePIDParamP             = 1.0;
+    public static double IntakeAnglePIDParamP             = 0.2;
     public static double IntakeAnglePIDParamI             = 0.0;
     public static double IntakeAnglePIDParamD             = 0.0;
 
@@ -54,14 +56,18 @@ public final class Constants
     // Elevator Constants
 
     // Voltage control
-    public static double ElevatorVoltageUp                = 0.5;
-    public static double ElevatorVoltageDown              = -0.5;
+//    public static double ElevatorVoltageUp                = 0.75;
+//    public static double ElevatorVoltageDown              = -0.75;
 
+    public static double ElevatorRPM                      = 250;
     // PID control
-    public static double ElevatorPIDParamF                = 0.1;
-    public static double ElevatorPIDParamP                = 0.01;
-    public static double ElevatorPIDParamI                = 0.0001;
+    public static double ElevatorPIDParamF                = 0.0; //0.1;
+    public static double ElevatorPIDParamP                = 0.0; //0.01;
+    public static double ElevatorPIDParamI                = 0.0; //0.0001;
     public static double ElevatorPIDParamD                = 0.0;
+    
+    public static double ElevatorPIDMaximum               = 1.0;
+    public static double ElevatorPIDMinimum               = -1.0;
 
     // ***************************************************************************************
     // Autonomous constants

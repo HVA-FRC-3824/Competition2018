@@ -50,7 +50,7 @@ public class ElevatorUpDown extends Command
     @Override
     protected void initialize()
     {
-        Robot.elevator.Elevator();
+
     }
 
     /*********************************************************************
@@ -60,7 +60,7 @@ public class ElevatorUpDown extends Command
     protected void execute()
     {
         //Robot.elevator.motorPercent(m_directionUp);
-        Robot.elevator.setRPM(m_directionUp, 200);
+        Robot.elevator.setRPM(m_directionUp, Constants.ElevatorRPM);
     }
 
     /*********************************************************************

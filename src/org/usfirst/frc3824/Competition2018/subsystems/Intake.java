@@ -45,7 +45,7 @@ public class Intake extends Subsystem
     /*********************************************************************
      *
      *********************************************************************/
-    public void Intake()
+    public Intake()
     {
         /**********************************************************************************/
         left.set(ControlMode.Velocity, 0);
@@ -87,9 +87,9 @@ public class Intake extends Subsystem
 
         /**********************************************************************************/
         angle.set(ControlMode.Position, 0);
-        angle.configSelectedFeedbackSensor(FeedbackDevice.Analog, 0, Constants.TalonInitialCommunicationTimeout);
+        angle.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
         angle.setSensorPhase(false);
-        angle.configSetParameter(ParamEnum.eFeedbackNotContinuous, 1, 0x00, 0x00, 0x00);
+//        angle.configSetParameter(ParamEnum.eFeedbackNotContinuous, 1, 0x00, 0x00, 0x00);
 
         angle.configClosedloopRamp(0, Constants.TalonInitialCommunicationTimeout);
         
@@ -104,14 +104,12 @@ public class Intake extends Subsystem
         angle.config_kD(0, Constants.IntakeAnglePIDParamD, Constants.TalonInitialCommunicationTimeout);
         
         resetAnglePosition();  // Not really need for Analog feedback
+         
+        System.out.println("*** Intake Constructor ***");
     }
 
-    /**********************************************************************************/
-    /* Right intake wheel */
-    /**********************************************************************************/
-
     /*********************************************************************
-     * 
+     * Returns error of PID algorithm for the right intake controller
      *********************************************************************/
     public double getPID_ErrorRight()
     {
@@ -119,7 +117,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns output of right intake motor in volts
      *********************************************************************/
     public double getMotorVoltageRight()
     {
@@ -127,7 +125,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns percent of maximum output of right intake motor
      *********************************************************************/
     public double getMotorPercentRight()
     {
@@ -135,7 +133,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current control mode for Talon SRXs for intake right motors
      *********************************************************************/
     public ControlMode getMotorControlModeRight()
     {
@@ -143,7 +141,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current setpoint being targeted for the right intake motors
      *********************************************************************/
     public double getPID_SetpointRight()
     {
@@ -151,7 +149,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current velocity of right intake motor calculated by controller
      *********************************************************************/
     public double getVelocityRight()
     {
@@ -159,7 +157,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     *  Returns current encoder position of right intake controller
      *********************************************************************/
     public double getPositionRight()
     {
@@ -167,19 +165,15 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-    *
+    * Resets right intake sensor encoder value to 0
     *********************************************************************/
     public void resetRightWheelPosition()
     {
         right.setSelectedSensorPosition(0, 0, Constants.TalonInitialCommunicationTimeout);
     }
 
-    /**********************************************************************************/
-    /* Left intake wheel */
-    /**********************************************************************************/
-
     /*********************************************************************
-     * 
+     * Returns error of PID algorithm for the left intake controller
      *********************************************************************/
     public double getPID_ErrorLeft()
     {
@@ -187,7 +181,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns output of left intake motor in volts
      *********************************************************************/
     public double getMotorVoltageLeft()
     {
@@ -195,7 +189,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns percent of maximum output of left intake motor
      *********************************************************************/
     public double getMotorPercentLeft()
     {
@@ -203,7 +197,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current control mode for Talon SRXs for intake left motors
      *********************************************************************/
     public ControlMode getMotorControlModeLeft()
     {
@@ -211,7 +205,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current setpoint being targeted for the left intake motors
      *********************************************************************/
     public double getPID_SetpointLeft()
     {
@@ -219,7 +213,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current velocity of right intake motor calculated by controller
      *********************************************************************/
     public double getVelocityLeft()
     {
@@ -227,7 +221,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current encoder position of left intake controller
      *********************************************************************/
     public double getPositionLeft()
     {
@@ -235,19 +229,15 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-    *
+    * Resets left intake sensor encoder value to 0
     *********************************************************************/
     public void resetLeftWheelPosition()
     {
         left.setSelectedSensorPosition(0, 0, Constants.TalonInitialCommunicationTimeout);
     }
 
-    /**********************************************************************************/
-    /* Intake angle */
-    /**********************************************************************************/
-
     /*********************************************************************
-     * 
+     * Returns error of PID algorithm for the intake angle controller
      *********************************************************************/
     public double getPID_ErrorAngle()
     {
@@ -255,7 +245,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns output of intake angle motor in volts
      *********************************************************************/
     public double getMotorVoltageAngle()
     {
@@ -263,7 +253,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns percent of maximum output of intake angle motor
      *********************************************************************/
     public double getMotorPercentAngle()
     {
@@ -271,7 +261,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current control mode for Talon SRXs for intake angle
      *********************************************************************/
     public ControlMode getMotorControlModeAngle()
     {
@@ -279,7 +269,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current setpoint being targeted for the intake angle
      *********************************************************************/
     public double getPID_SetpointAngle()
     {
@@ -287,15 +277,15 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     * 
+     * Returns current angle of intake as an encoder value
      *********************************************************************/
     public double getPositionAngle()
     {
-        return angle.getSensorCollection().getAnalogIn();
+        return angle.getSelectedSensorPosition(0);
     }
 
     /*********************************************************************
-    *
+    * Resets angle sensor encoder value to 0
     *********************************************************************/
     public void resetAnglePosition()
     {
@@ -318,7 +308,7 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     *
+     * Method that runs in a periodic loop that constantly sets the angle of the intake based on user input
      *********************************************************************/
     @Override
     public void periodic()
@@ -332,23 +322,15 @@ public class Intake extends Subsystem
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
-
+    
     /*********************************************************************
-     *
-     *********************************************************************/
-    public void setIntakeIn()
-    {
-        // speed we want intake to occur
-        setSpeed(true, 0);
-    }
-
-    /*********************************************************************
-     *
-     *********************************************************************/
-    public void setIntakeOut()
+    * Sets the RPM of the intake wheels to 0 (stops the motors)
+    *********************************************************************/
+    public void stopIntake()
     {
         // speed for spitting out cube
-        setSpeed(false, 0);
+        left.set(0);
+        right.set(0);
     }
 
     /*********************************************************************
@@ -361,32 +343,32 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-     *
+     * Uses PIDs with Talon SRX encoder feedback to set the RPM of the intake wheels to a specified velocity
      *********************************************************************/
-    public void setSpeed(boolean direction, double speed)
+    public void setRPM(boolean direction, double RPM)
     {
         /* Speed mode */
         /*
          * 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
          * velocity setpoint is in units/100ms 500 RPM is maximum wheel speed
          */
-        double targetVelocity_UnitsPer100ms = speed * 4096 / 600;
+        double targetVelocity = RPM * 4096 / 600;
 
         if (direction == false)
-            targetVelocity_UnitsPer100ms = -targetVelocity_UnitsPer100ms;
+            targetVelocity = -targetVelocity;
 
         /* 1500 RPM in either direction */
-        left.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
-        right.set(ControlMode.Velocity, targetVelocity_UnitsPer100ms);
+        left.set(ControlMode.Velocity, targetVelocity);
+        right.set(ControlMode.Velocity, targetVelocity);
     }
 
     /*********************************************************************
-    *
+    * Uses PIDs with Talon SRX encoder feedback to set the position of the intake to a specified angle
     *********************************************************************/
     public void setAngle(double positionAngle)
     {
-        double slope = (Constants.EncoderPlusDegrees - Constants.EncoderMinusDegrees) / 180;
-        double Yint = Constants.EncoderMinusDegrees + (slope * 90);
+        double slope = (Constants.IntakeAngleEncoderPlusDegrees - Constants.IntakeAngleEncoderMinusDegrees) / 180;
+        double Yint = Constants.IntakeAngleEncoderMinusDegrees + (slope * 90);
 
         double calculatedAngle = (positionAngle * slope) + Yint;
         angle.set(ControlMode.Position, calculatedAngle);

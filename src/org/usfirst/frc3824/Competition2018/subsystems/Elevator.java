@@ -42,9 +42,9 @@ public class Elevator extends Subsystem
     /*********************************************************************
      *
      *********************************************************************/
-    public void Elevator()
+    public Elevator()
     {
-        lift.set(ControlMode.Position, 0);
+        lift.set(ControlMode.Velocity, 0);
         lift.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
         lift.setSensorPhase(false);
         
@@ -52,8 +52,8 @@ public class Elevator extends Subsystem
 
         lift.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
         lift.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
-        lift.configPeakOutputForward(1.0, Constants.TalonInitialCommunicationTimeout);
-        lift.configPeakOutputReverse(-1.0, Constants.TalonInitialCommunicationTimeout);
+        lift.configPeakOutputForward(Constants.ElevatorPIDMaximum, Constants.TalonInitialCommunicationTimeout);
+        lift.configPeakOutputReverse(Constants.ElevatorPIDMinimum, Constants.TalonInitialCommunicationTimeout);
 
         lift.config_kF(0, Constants.ElevatorPIDParamF, Constants.TalonInitialCommunicationTimeout);
         lift.config_kP(0, Constants.ElevatorPIDParamP, Constants.TalonInitialCommunicationTimeout);
@@ -77,7 +77,7 @@ public class Elevator extends Subsystem
          */
         double targetVelocity_UnitsPer100ms = RPM * 4096 / 600;
 
-        if (direction == false)
+        if (direction == true)
             targetVelocity_UnitsPer100ms = -targetVelocity_UnitsPer100ms;
 
         /* 1500 RPM in either direction */
@@ -182,25 +182,25 @@ public class Elevator extends Subsystem
         SmartDashboard.putNumber("motorPercent", 0);
     }
 
-    /*********************************************************************
-     * 
-     *********************************************************************/
-    public void motorPercent(boolean directionUp)
-    {
-        // determine the desire elevator direction
-        if (directionUp == true)
-        {
-            // Raise the elevator
-            lift.set(ControlMode.PercentOutput, Constants.ElevatorVoltageUp);
-
-            SmartDashboard.putNumber("motorPercent", Constants.ElevatorVoltageUp);
-        }
-        else
-        {
-            // Lower the elevator
-            lift.set(ControlMode.PercentOutput, Constants.ElevatorVoltageDown);
-
-            SmartDashboard.putNumber("motorPercent", Constants.ElevatorVoltageDown);
-        }
-    }
+//    /*********************************************************************
+//     * 
+//     *********************************************************************/
+//    public void motorPercent(boolean directionUp)
+//    {
+//        // determine the desire elevator direction
+//        if (directionUp == true)
+//        {
+//            // Raise the elevator
+//            lift.set(ControlMode.PercentOutput, Constants.ElevatorVoltageUp);
+//
+//            SmartDashboard.putNumber("motorPercent", Constants.ElevatorVoltageUp);
+//        }
+//        else
+//        {
+//            // Lower the elevator
+//            lift.set(ControlMode.PercentOutput, Constants.ElevatorVoltageDown);
+//
+//            SmartDashboard.putNumber("motorPercent", Constants.ElevatorVoltageDown);
+//        }
+//    }
 }

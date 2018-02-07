@@ -11,6 +11,8 @@
 package org.usfirst.frc3824.Competition2018.commands;
 
 import edu.wpi.first.wpilibj.command.Command;
+
+import org.usfirst.frc3824.Competition2018.Constants;
 import org.usfirst.frc3824.Competition2018.Robot;
 
 /**
@@ -48,7 +50,7 @@ public class IntakeInOut extends Command
     @Override
     protected void initialize()
     {
-        Robot.intake.Intake();
+
     }
 
     /*********************************************************************
@@ -57,7 +59,7 @@ public class IntakeInOut extends Command
     @Override
     protected void execute()
     {
-        Robot.intake.setSpeed(m_directionIn, 600);
+        Robot.intake.setRPM(m_directionIn, Constants.IntakeRPM);
     }
 
     /*********************************************************************
@@ -75,7 +77,7 @@ public class IntakeInOut extends Command
     @Override
     protected void end()
     {
-        
+        Robot.intake.stopIntake();
     }
 
     /*********************************************************************
@@ -85,5 +87,6 @@ public class IntakeInOut extends Command
     @Override
     protected void interrupted()
     {
+        end();
     }
 }
