@@ -173,7 +173,7 @@ public class Robot extends TimedRobot
 	    SmartDashboard.putNumber("rightDistance", chassis.getRightDistance());
 	    SmartDashboard.putNumber("leftDistance",  chassis.getLeftDistance());
 	    
-	    SmartDashboard.putNumber("gyro",          chassis.getGyroAngle());
+	    SmartDashboard.putNumber("gyro",          chassis.getCurrentHeading());
 	    SmartDashboard.putNumber("gyroTurnError", chassis.getAngleTurnError());
 
 	    SmartDashboard.putNumber("Elevator Error",        Robot.elevator.getPID_Error());

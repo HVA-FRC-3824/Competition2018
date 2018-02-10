@@ -224,6 +224,16 @@ Children:
           name: Safety Enabled, validators: null, value: false}
       Base: Differential Drive
       Name: DriveTrain
+    - Children: []
+      Properties:
+        Input Channel (Analog): !!robotbuilder.data.properties.ChoicesProperty
+          choices: ['0', '1', '2', '3', '4', '5', '6', '7']
+          default: '0'
+          name: Input Channel (Analog)
+          validators: [AnalogInput]
+          value: '1'
+      Base: Analog Input
+      Name: ultrasonic
     Properties:
       Send to SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Send to SmartDashboard, validators: null, value: false}
@@ -619,7 +629,7 @@ Children:
           - {name: distance, type: double, value: '10.0'}
           - {name: power, type: double, value: '0.5'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
+        name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: ChassisDriveDistance
   - Children: []

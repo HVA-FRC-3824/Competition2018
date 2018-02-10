@@ -19,6 +19,20 @@ public final class Constants
     public static double DrivetrainDriveStraight_I        = 0.00005;
     public static double DrivetrainDriveStraight_D        = 0.0;
 
+    public static double DrivetrainDriveMinimumOutput     = -1.0;
+    public static double DrivetrainDriveMaximumOutput     = 1.0;
+
+    public static double DRIVETRAIN_DRIVE_TOLERANCE       = 0.0;
+
+    // ***************************************************************************************
+    // Ultrasonic constants
+
+    public static double ULTRASONIC_X1                    = 0.086669;
+    public static double ULTRASONIC_Y1                    = 10.0;
+
+    public static double ULTRASONIC_X2                    = 0.467592;
+    public static double ULTRASONIC_Y2                    = 50.0;
+
     // ***************************************************************************************
     // Chassis turn constants
 
@@ -35,12 +49,12 @@ public final class Constants
     public static double IntakeAngleEncoderPlusDegrees    = 0;
 
     public static double IntakeAnglePIDParamF             = 0.0;
-    public static double IntakeAnglePIDParamP             = 0.3;    // 0.2
-    public static double IntakeAnglePIDParamI             = 0.000;  // 0.0
+    public static double IntakeAnglePIDParamP             = 0.3;     // 0.2
+    public static double IntakeAnglePIDParamI             = 0.000;   // 0.0
     public static double IntakeAnglePIDParamD             = 0.0;
 
-    public static double IntakeAnglePIDMaximum            = 0.75;   // 0.2
-    public static double IntakeAnglePIDMinimum            = -0.75;  // -0.2
+    public static double IntakeAnglePIDMaximum            = 0.75;    // 0.2
+    public static double IntakeAnglePIDMinimum            = -0.75;   // -0.2
 
     // ***************************************************************************************
     // Intake wheel constants

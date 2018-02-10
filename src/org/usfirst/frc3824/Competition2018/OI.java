@@ -81,6 +81,7 @@ public class OI
 
 
         // SmartDashboard Buttons
+        SmartDashboard.putData("ChassisDriveDistance: DISTANCE_10FT", new ChassisDriveDistance(10.0, 0.5));
         SmartDashboard.putData("ChassisResetEncoders", new ChassisResetEncoders());
         SmartDashboard.putData("ChassisGyroTest: Degrees90", new ChassisGyroTest(90, 0.5));
 
