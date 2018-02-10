@@ -186,5 +186,15 @@ public class Robot extends TimedRobot
 	    SmartDashboard.putNumber("Intake Angle MotorPercent", Robot.intake.getMotorPercentAngle());
         SmartDashboard.putNumber("Intake Angle Setpoint",     Robot.intake.getPID_SetpointAngle());
         SmartDashboard.putNumber("Intake Angle Position",     Robot.intake.getPositionAngle());
+        
+        SmartDashboard.putNumber("Intake Right Error", Robot.intake.getPID_ErrorRight());
+        SmartDashboard.putNumber("Intake Right MotorPercent", Robot.intake.getMotorPercentRight());
+        SmartDashboard.putNumber("Intake Right Setpoint", Robot.intake.getPID_SetpointRight());
+        SmartDashboard.putNumber("Intake Right Velocity", Robot.intake.getPID_SetpointRight());
+        
+        SmartDashboard.putNumber("Intake Left Error", Robot.intake.getPID_ErrorLeft());
+        SmartDashboard.putNumber("Intake Left MotorPercent", Robot.intake.getMotorPercentLeft());
+        SmartDashboard.putNumber("Intake Left Setpoint", Robot.intake.getPID_SetpointLeft());
+        SmartDashboard.putNumber("Intake Left Velocity", Robot.intake.getPID_SetpointLeft());
 	}
 }

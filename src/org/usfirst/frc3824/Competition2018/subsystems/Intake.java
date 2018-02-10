@@ -57,7 +57,7 @@ public class Intake extends Subsystem
         left.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
         left.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
         left.configPeakOutputForward(Constants.IntakeWheelPIDMaximum, Constants.TalonInitialCommunicationTimeout);
-        left.configPeakOutputReverse(Constants.IntakeAnglePIDMinimum, Constants.TalonInitialCommunicationTimeout);
+        left.configPeakOutputReverse(Constants.IntakeWheelPIDMinimum, Constants.TalonInitialCommunicationTimeout);
 
         left.config_kF(0, Constants.IntakeWheelPIDParamF, Constants.TalonInitialCommunicationTimeout);
         left.config_kP(0, Constants.IntakeWheelPIDParamP, Constants.TalonInitialCommunicationTimeout);
@@ -76,7 +76,7 @@ public class Intake extends Subsystem
         right.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
         right.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
         right.configPeakOutputForward(Constants.IntakeWheelPIDMaximum, Constants.TalonInitialCommunicationTimeout);
-        right.configPeakOutputReverse(Constants.IntakeAnglePIDMinimum, Constants.TalonInitialCommunicationTimeout);
+        right.configPeakOutputReverse(Constants.IntakeWheelPIDMinimum, Constants.TalonInitialCommunicationTimeout);
 
         right.config_kF(0, Constants.IntakeWheelPIDParamF, Constants.TalonInitialCommunicationTimeout);
         right.config_kP(0, Constants.IntakeWheelPIDParamP, Constants.TalonInitialCommunicationTimeout);
@@ -105,6 +105,9 @@ public class Intake extends Subsystem
         
         resetAnglePosition();  // Not really need for Analog feedback
          
+        // Ensure the intake wheels are not moving
+        stopIntake();
+        
         System.out.println("*** Intake Constructor ***");
     }
 
@@ -313,11 +316,18 @@ public class Intake extends Subsystem
     @Override
     public void periodic()
     {
-        double joy = Robot.oi.driveJoystick.getThrottle();
+        // Determine the intake angle from the joystick
+        double intakeAngle = Robot.oi.opJoystick.getZ();
         
-        setAngle(90 * joy);
+        // Set the intake based on the joystick setting
+        setAngle(90 * intakeAngle);
         
-        SmartDashboard.putNumber("Angle Value", (90 * joy));
+        SmartDashboard.putNumber("Angle Value", (90 * intakeAngle));
+        
+        // Determine the intake wheel speed based on the joystick
+        double intakeSpeed = -Robot.oi.opJoystick.getY();
+        setRPM(true, intakeSpeed * Constants.IntakeMaximumRPM);
+        SmartDashboard.putNumber("Intake Wheel Speed", intakeSpeed * Constants.IntakeMaximumRPM);
     }
 
     // Put methods for controlling this subsystem
@@ -354,12 +364,16 @@ public class Intake extends Subsystem
          */
         double targetVelocity = RPM * 4096 / 600;
 
+        // Determine the wheel direction
         if (direction == false)
             targetVelocity = -targetVelocity;
 
-        /* 1500 RPM in either direction */
+        // Set the wheel PID velocity setpoint
         left.set(ControlMode.Velocity, targetVelocity);
         right.set(ControlMode.Velocity, targetVelocity);
+
+        SmartDashboard.putNumber("Intake Target Velocity", targetVelocity);
+        SmartDashboard.putNumber("Intake RPM",RPM);
     }
 
     /*********************************************************************
@@ -368,7 +382,7 @@ public class Intake extends Subsystem
     public void setAngle(double positionAngle)
     {
         double slope = (Constants.IntakeAngleEncoderPlusDegrees - Constants.IntakeAngleEncoderMinusDegrees) / 180;
-        double Yint = Constants.IntakeAngleEncoderMinusDegrees + (slope * 90);
+        double Yint  = Constants.IntakeAngleEncoderMinusDegrees + (slope * 90);
 
         double calculatedAngle = (positionAngle * slope) + Yint;
         angle.set(ControlMode.Position, calculatedAngle);

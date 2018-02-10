@@ -132,19 +132,21 @@ public class Chassis extends Subsystem
      *********************************************************************/
     public void driveWithJoystick(Joystick stick)
     {
-        // Square twist to decrease sensitivity
+//        // Square twist to decrease sensitivity
+//        double twist = -stick.getTwist() * 0.75;
+//
+//        // Determine if the twist is negative to allow restoring the sign
+//        if (twist < 0)
+//        {
+//            // Remember to preserve direction, it is lost when squaring
+//            twist = -1.0 * (twist * twist);
+//        }
+//        else
+//        {
+//            twist = twist * twist;
+//        }
+        
         double twist = -stick.getTwist() * 0.75;
-
-        // Determine if the twist is negative to allow restoring the sign
-        if (twist < 0)
-        {
-            // Remember to preserve direction, it is lost when squaring
-            twist = -1.0 * (twist * twist);
-        }
-        else
-        {
-            twist = twist * twist;
-        }
 
         // Square forward/backward to decrease sensitivity
         double moveValue = stick.getY();
