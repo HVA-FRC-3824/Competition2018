@@ -12,6 +12,7 @@ package org.usfirst.frc3824.Competition2018.commands;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc3824.Competition2018.Constants;
 import org.usfirst.frc3824.Competition2018.Robot;
@@ -60,6 +61,8 @@ public class ChassisTurnAngle extends Command
     @Override
     protected void initialize()
     {
+        SmartDashboard.putBoolean("Turn End", false);
+        
         Robot.chassis.turnAnglePID(m_turnDegrees, m_power);
 
         // Reset and start the on target timer
@@ -77,6 +80,7 @@ public class ChassisTurnAngle extends Command
     @Override
     protected void execute()
     {
+        
     }
 
     /*********************************************************************
@@ -114,7 +118,10 @@ public class ChassisTurnAngle extends Command
     @Override
     protected void end()
     {
-        Robot.chassis.resetChassisPIDcontrollersAndEncoders();
+        SmartDashboard.putBoolean("Turn End", true);
+        
+        Robot.chassis.resetChassisPIDcontrollers();
+        
         m_OnTargetTimer.stop();
         m_WatchdogTimer.stop();
     }

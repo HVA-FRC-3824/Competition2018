@@ -10,8 +10,6 @@ public final class Constants
     // ***************************************************************************************
     // Chassis constants
 
-    public static double ChassisTurnThreshold             = 0.0;
-
     // ***************************************************************************************
     // Drive straight constants
 
@@ -32,13 +30,21 @@ public final class Constants
 
     public static double ULTRASONIC_X2                    = 0.467592;
     public static double ULTRASONIC_Y2                    = 50.0;
+    
+    public static double ULTRASONIC_A                     = 108.23;
+    public static double ULTRASONIC_B                     = -1.364;
+    
+    public static double ULTRASONIC_DRIVE_DISTANCE_RANGE  = 10.0;
 
     // ***************************************************************************************
     // Chassis turn constants
 
-    public static double TurnAngle_P                      = 0.06;
-    public static double TurnAngle_I                      = 0.0;
-    public static double TurnAngle_D                      = 0.0;
+    public static double ChassisTurnThreshold             = 2.0;
+
+    public static double TurnAngle_P                      = 0.015;
+    public static double TurnAngle_I                      = 0.002;
+    public static double TurnAngle_D                      = 0.002;
+
     public static double TurnAngle_MinimumOutput          = -0.4;
     public static double TurnAngle_MaximumOutput          = 0.4;
 
@@ -71,12 +77,19 @@ public final class Constants
 
     // ***************************************************************************************
     // Elevator Constants
+    
+    public static boolean ElevatorUsePosition             = false;
+    
+    public static double ElevatorRPM                      = 200;
+    
+    public static double ElevatorStartPosition            = 0;
+    public static double ElevatorChutePosition            = 500;
+    public static double ElevatorSwitchPosition           = 1000;
+    public static double ElevatorScalePosition            = 2000;
 
-    public static double ElevatorRPM                      = 900;
-
-    public static double ElevatorPIDParamF                = 0.2;
-    public static double ElevatorPIDParamP                = 0.02;
-    public static double ElevatorPIDParamI                = 0.0002;
+    public static double ElevatorPIDParamF                = 0.4;
+    public static double ElevatorPIDParamP                = 0.05;
+    public static double ElevatorPIDParamI                = 0.002;
     public static double ElevatorPIDParamD                = 0.0;
 
     public static double ElevatorPIDMaximum               = 1.0;
@@ -87,4 +100,8 @@ public final class Constants
 
     public static double AutoLineDriveDistance            = 10.0;
     public static double AutoLineDrivePower               = 0.5;
+
+    public static double AutoCenterSwitchFromWall         = 1.0;
+    public static double AutoCenterSwitchDiagonal         = 6.0;
+    public static double AutoCenterSwitchToSwitch         = 1.0;
 }

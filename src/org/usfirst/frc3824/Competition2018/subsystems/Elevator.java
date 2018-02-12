@@ -46,9 +46,17 @@ public class Elevator extends Subsystem
     public Elevator()
     {
         // Configure the elevator master velocity PID
-        liftMaster.set(ControlMode.Velocity, 0);
+        
+        if (Constants.ElevatorUsePosition == false)
+        {
+            liftMaster.set(ControlMode.Velocity, 0);
+        } else
+        {
+            liftMaster.set(ControlMode.Position, 0);
+        }
+        
         liftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
-        liftMaster.setSensorPhase(false);
+        liftMaster.setSensorPhase(true);
         
         liftMaster.configClosedloopRamp(0, Constants.TalonInitialCommunicationTimeout);
 
@@ -90,6 +98,12 @@ public class Elevator extends Subsystem
 
         // Set the elevator velocity PID setpoint
         liftMaster.set(ControlMode.Velocity, targetVelocity);
+    }
+    
+    public void setPosition(double position)
+    {
+        // Set the elevator velocity PID setpoint
+        liftMaster.set(ControlMode.Position, position);
     }
 
     /*********************************************************************

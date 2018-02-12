@@ -60,7 +60,8 @@ public class ElevatorUpDown extends Command
     protected void execute()
     {
         //Robot.elevator.motorPercent(m_directionUp);
-        Robot.elevator.setRPM(m_directionUp, Constants.ElevatorRPM);
+        if(Constants.ElevatorUsePosition == false)
+            Robot.elevator.setRPM(m_directionUp, Constants.ElevatorRPM);
     }
 
     /*********************************************************************
