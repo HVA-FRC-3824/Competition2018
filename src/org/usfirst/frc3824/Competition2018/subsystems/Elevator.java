@@ -45,6 +45,9 @@ public class Elevator extends Subsystem
      *********************************************************************/
     public Elevator()
     {
+        // Reset the elevator position
+        resetPosition();
+        
         // Configure the elevator master velocity PID
         
         if (Constants.ElevatorUsePosition == false)
@@ -52,7 +55,7 @@ public class Elevator extends Subsystem
             liftMaster.set(ControlMode.Velocity, 0);
         } else
         {
-            liftMaster.set(ControlMode.Position, 0);
+            liftMaster.set(ControlMode.MotionMagic, 0);
         }
         
         liftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
@@ -69,12 +72,12 @@ public class Elevator extends Subsystem
         liftMaster.config_kP(0, Constants.ElevatorPIDParamP, Constants.TalonInitialCommunicationTimeout);
         liftMaster.config_kI(0, Constants.ElevatorPIDParamI, Constants.TalonInitialCommunicationTimeout);
         liftMaster.config_kD(0, Constants.ElevatorPIDParamD, Constants.TalonInitialCommunicationTimeout);
+        
+        liftMaster.configMotionCruiseVelocity(Constants.ElevatorCruiseVelocity, Constants.TalonInitialCommunicationTimeout);
+        liftMaster.configMotionAcceleration(Constants.ElevatorAcceleration, Constants.TalonInitialCommunicationTimeout);
 
         // Make the slave follow the master
         liftSlave.follow(liftMaster);
-        
-        // Reset the elevator position
-        resetPosition();
         
         System.out.println("*** Elevator Constructor ***");
     }
@@ -103,7 +106,7 @@ public class Elevator extends Subsystem
     public void setPosition(double position)
     {
         // Set the elevator velocity PID setpoint
-        liftMaster.set(ControlMode.Position, position);
+        liftMaster.set(ControlMode.MotionMagic, position);
     }
 
     /*********************************************************************

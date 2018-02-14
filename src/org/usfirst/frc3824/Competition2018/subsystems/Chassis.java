@@ -134,8 +134,8 @@ public class Chassis extends Subsystem
      *********************************************************************/
     public void driveWithJoystick(Joystick stick)
     {
-        double twist = -stick.getTwist();
-        double moveValue = stick.getY();
+        double twist     = -stick.getTwist();
+        double moveValue =  stick.getY();
         
         if (Math.abs(twist) > 0.2)
         {

@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 import org.usfirst.frc3824.Competition2018.Constants;
+import org.usfirst.frc3824.Competition2018.Robot;
 import org.usfirst.frc3824.Competition2018.subsystems.*;
 
 /**
@@ -48,35 +49,40 @@ public class AutonomousPlaceSwitchCenter extends CommandGroup
 
         double distance = 0;
         double angle = 45.0;
-        
+
         String gameData = DriverStation.getInstance().getGameSpecificMessage();
-                             
+
         if (gameData.length() > 0)
         {
-            // Determine which switch is active
-            if (gameData.charAt(0) == 'L')
-                angle = -45.0;  
-        
             // Lower intake to horizontal position
-
-            // Raise elevator to switch height
-
-            // Drive forward to switch
-            distance += Constants.AutoCenterSwitchFromWall;
-            addSequential(new ChassisDriveDistance(distance, 0.2, 0.0));
-                        
-            addSequential(new ChassisTurnAngle(angle, 0.0));
+            addParallel(new IntakeRotate(-70.0));
+//
+//            // Raise elevator to switch height
+//            addParallel(new ElevatorUpDownTime(true, 2.0));
+//
+//            // Drive forward to switch
+//            distance += Constants.AutoCenterSwitchFromWall;
+//            addSequential(new ChassisDriveDistance(distance, 0.2, 0.0));
+//
+//          // Determine which switch is active
+//          if (gameData.charAt(0) == 'L')
+//              angle = -45.0;
             
-            distance += Constants.AutoCenterSwitchDiagonal;
-            addSequential(new ChassisDriveDistance(distance, 0.4, angle));
-            
-            addSequential(new ChassisTurnAngle(0.0, 0.0));
-            
-            distance += Constants.AutoCenterSwitchToSwitch;
-            addSequential(new ChassisDriveRange(10, 0.4, 0.0));
-        
-            // Determine which side of field robot is on
+//            addSequential(new ChassisTurnAngle(angle, 0.0));
+//
+//            distance += Constants.AutoCenterSwitchDiagonal;
+//            addSequential(new ChassisDriveDistance(distance, 0.4, angle));
+//
+//            addSequential(new ChassisTurnAngle(0.0, 0.0));
+//
+//            distance += Constants.AutoCenterSwitchToSwitch;
+//            addSequential(new ChassisDriveRange(10, 0.4, 0.0));
+//
+//            addSequential(new IntakeInOutTime(false, 1.0, 10));
 
+            
+            
+            
             // Turn to face switch
 
             // Drive forward to switch
