@@ -58,8 +58,6 @@ public class IntakeTeleop extends Command
         
         SmartDashboard.putNumber("Angle Value", (90 * intakeAngle));
         
-        
-        
         // Determine the intake wheel speed based on the joystick
         double intakeSpeed = -Robot.oi.opJoystick.getY();
         Robot.intake.setRPM(true, intakeSpeed * Constants.IntakeMaximumRPM);

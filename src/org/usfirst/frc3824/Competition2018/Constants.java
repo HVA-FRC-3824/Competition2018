@@ -55,6 +55,8 @@ public final class Constants
 
     public static double  IntakeMinimumAngle               = -90;
     public static double  IntakeMaximumAngle               = 30;
+    
+    public static double  IntakeAngleHomePosition          = -80;
 
     // public static double IntakeAnglePIDParamF = 0.0;
     // public static double IntakeAnglePIDParamP = 0.01; // 0.2
@@ -77,9 +79,11 @@ public final class Constants
 
     public static double  IntakeMaximumRPM                 = 500;
 
-    public static double  IntakeWheelPIDParamF             = 0.2;
-    public static double  IntakeWheelPIDParamP             = 0.02;
-    public static double  IntakeWheelPIDParamI             = 0.0002;
+    public static double  IntakeWheelHoldVoltage           = 0.1;
+            
+    public static double  IntakeWheelPIDParamF             = 0.075;
+    public static double  IntakeWheelPIDParamP             = 0.075; //0.02;
+    public static double  IntakeWheelPIDParamI             = 0.0005; //0.0002;
     public static double  IntakeWheelPIDParamD             = 0.0;
 
     public static double  IntakeWheelPIDMaximum            = 1.0;
@@ -96,9 +100,9 @@ public final class Constants
     public static int     ElevatorAcceleration             = 1000*2;
 
     public static double  ElevatorStartPosition            = 0;
-    public static double  ElevatorChutePosition            = 500;
-    public static double  ElevatorSwitchPosition           = 1000;
-    public static double  ElevatorScalePosition            = 2000;
+    public static double  ElevatorChutePosition            = 0;
+    public static double  ElevatorSwitchPosition           = -10000;
+    public static double  ElevatorScalePosition            = -50000;
 
     public static double  ElevatorPIDParamF                = 0.4;
     public static double  ElevatorPIDParamP                = 0.04;

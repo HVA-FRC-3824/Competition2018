@@ -380,7 +380,7 @@ public class Intake extends Subsystem
         double targetVelocity = RPM * 4096 / 600;
 
         // Determine the wheel direction
-        if (direction == false)
+        if (direction == true)
             targetVelocity = -targetVelocity;
 
         // Set the wheel PID velocity setpoint
@@ -389,6 +389,20 @@ public class Intake extends Subsystem
 
         SmartDashboard.putNumber("Intake Target Velocity", targetVelocity);
         SmartDashboard.putNumber("Intake RPM",RPM);
+    }
+    
+    /*********************************************************************
+     * Sets voltage percent to intake wheels
+     *********************************************************************/
+    public void setWheelVoltage(boolean direction, double power)
+    {  
+        // Determine the wheel direction
+        if (direction == true)
+            power = -power;
+
+        // Set the wheel PID velocity setpoint
+        left.set(ControlMode.PercentOutput, power);
+        right.set(ControlMode.PercentOutput, power);
     }
 
     /*********************************************************************

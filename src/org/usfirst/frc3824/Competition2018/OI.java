@@ -86,9 +86,9 @@ public class OI {
         elevatorStart = new JoystickButton(opJoystick, 2);
         elevatorStart.whenPressed(new ElevatorUpDownPosition(0));
         intakeOut = new JoystickButton(opJoystick, 11);
-        intakeOut.whileHeld(new IntakeInOut(false));
+        intakeOut.whileHeld(new IntakeInOut(false, 0));
         intakeIn = new JoystickButton(opJoystick, 10);
-        intakeIn.whileHeld(new IntakeInOut(true));
+        intakeIn.whileHeld(new IntakeInOut(true, 0));
         elevatorDown = new JoystickButton(opJoystick, 7);
         elevatorDown.whileHeld(new ElevatorUpDown(false));
         elevatorUp = new JoystickButton(opJoystick, 6);
@@ -104,8 +104,8 @@ public class OI {
         SmartDashboard.putData("ChassisTurnAngle: NinetyDegrees", new ChassisTurnAngle(0.0, 90.0));
         SmartDashboard.putData("ChassisResetEncoders", new ChassisResetEncoders());
         SmartDashboard.putData("ChassisGyroTest: Degrees90", new ChassisGyroTest(90, 0.5));
-        SmartDashboard.putData("IntakeInOut: In", new IntakeInOut(true));
-        SmartDashboard.putData("IntakeInOut: Out", new IntakeInOut(false));
+        SmartDashboard.putData("IntakeInOutTime: inTen", new IntakeInOutTime(true, 10, 500));
+        SmartDashboard.putData("IntakeInOutTime: outTen", new IntakeInOutTime(false, 10, 500));
         SmartDashboard.putData("Gyro Reset", new GyroReset());
         SmartDashboard.putData("ChassisDriveRange: TWENTY_INCHES", new ChassisDriveRange(20.0, 0.4, 0.0));
 
