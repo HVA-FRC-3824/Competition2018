@@ -70,10 +70,10 @@ public class ChassisDriveRange extends Command
     protected void execute()
     {
         // Slow down when reaching the desired position
-        if (Math.abs(m_distance - Robot.chassis.getUltrasonicDistance()) < Constants.ULTRASONIC_DRIVE_DISTANCE_RANGE)
+        if (Math.abs(m_distance - Robot.chassis.getUltrasonicDistance()) < Constants.UltrasonicDriveDistanceRange)
         {
             System.out.println("Change Magnitude");
-            Robot.chassis.updateMagnitude(0.3);
+            Robot.chassis.updateMagnitude(Constants.UltrasonicDriveDistancePower);
         }
     }
 

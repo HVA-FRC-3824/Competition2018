@@ -120,19 +120,22 @@ public class AutonomousSwitchOrScale extends CommandGroup
         initializseIntakeAndElevator(Constants.IntakePlaceAngle, Constants.ElevatorSwitchPosition);
 
         // Drive forward to Switch
-        addParallel(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveSwitch, 0.8, 0.0));
+        addParallel(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveSwitchDistance, 
+                                             Constants.AutoSwitchOrScaleDriveSwitchPower, 0.0));
 
         // Turn towards the Switch
-        addSequential(new ChassisTurnAngle(angle, 0.0), 1.0);
+        addSequential(new ChassisTurnAngle(angle, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Drive up to the Switch
-        addSequential(new ChassisDriveRange(Constants.AutoCenterSwitchToSwitch, 0.4, 0.0));
+        addSequential(new ChassisDriveRange(Constants.AutoSwitchOrScaleToSwitchDistance, 
+                                            Constants.AutoSwitchOrScaleToSwitchPower, 0.0));
 
         // Place the cube
-        addSequential(new IntakeInOutTime(false, 2.0, Constants.IntakeMaximumRPM));
+        addSequential(new IntakeInOutTime(false, Constants.IntakeWheelShootTime, Constants.IntakeMaximumRPM));
 
         // Back up from the Switch
-        addSequential(new ChassisDriveDistance(Constants.AutoCenterSwitchBackUp, -0.6, angle));
+        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleBackUpDistance, 
+                                               Constants.AutoSwitchOrScaleBackUpPower, angle));
 
         // Set the intake and elevator to the home position for teleoperated period
         homeIntakeAndElevator();
@@ -147,20 +150,21 @@ public class AutonomousSwitchOrScale extends CommandGroup
         initializseIntakeAndElevator(Constants.IntakeShootAngle, Constants.ElevatorSwitchPosition);
 
         // Drive forward to Scale
-        addParallel(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveScale, 0.8, 0.0));
+        addParallel(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveScaleDistance, 
+                                             Constants.AutoSwitchOrScaleDriveScalePower, 0.0));
 
         // Raise the elevator to the Scale position
         addParallel(new ElevatorUpDownPosition(Constants.ElevatorScalePosition));
 
         // Turn towards the Scale
-        addSequential(new ChassisTurnAngle(angle, 0.0), 1.0);
+        addSequential(new ChassisTurnAngle(angle, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Wait for turn to complete and scale to reach height
         // Note: MAY BE ABLE TO REMOVE
         addSequential(new Delay(2));
 
         // Release the Cube
-        addSequential(new IntakeInOutTime(false, 2.0, Constants.IntakeMaximumRPM));
+        addSequential(new IntakeInOutTime(false, Constants.IntakeWheelShootTime, Constants.IntakeMaximumRPM));
 
         // Set the intake and elevator to the home position for teleoperated period
         homeIntakeAndElevator();
@@ -186,32 +190,35 @@ public class AutonomousSwitchOrScale extends CommandGroup
         initializseIntakeAndElevator(Constants.IntakeShootAngle, Constants.ElevatorSwitchPosition);
 
         // Drive to between the Switch and Scale
-        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveOppositeScale, 0.8, 0.0));
+        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveOppositeScaleDistance, 
+                                               Constants.AutoSwitchOrScaleDriveOppositeScalePower, 0.0));
 
         // Turn to drive to the opposite
-        addSequential(new ChassisTurnAngle(angleFirstTurn, 0.0), 2.0);
+        addSequential(new ChassisTurnAngle(angleFirstTurn, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Drive to the opposite side
-        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveAcrossField, 0.8, angleFirstTurn));
+        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveAcrossFieldDistance, 
+                                               Constants.AutoSwitchOrScaleDriveAcrossFieldPower, angleFirstTurn));
 
         // Turn to drive up the field
-        addSequential(new ChassisTurnAngle(0.0, 0.0), 2.0);
+        addSequential(new ChassisTurnAngle(0.0, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Raise the elevator to the Scale position
         addParallel(new ElevatorUpDownPosition(Constants.ElevatorScalePosition));
 
         // Drive up the field to cross the "shoot" line
-        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveScaleShort, 0.4, 0.0));
+        addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveScaleShortDistance, 
+                                               Constants.AutoSwitchOrScaleDriveScaleShortPower, 0.0));
 
         // Turn towards to the Scale
-        addSequential(new ChassisTurnAngle(angleTurnToShoot, 0.0), 1.0);
+        addSequential(new ChassisTurnAngle(angleTurnToShoot, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Wait for turn to complete and the elevator to rise
         // Note: MAY BE ABLE TO REMOVE
         addSequential(new Delay(2));
 
         // Release the Cube
-        addSequential(new IntakeInOutTime(false, 2.0, Constants.IntakeMaximumRPM));
+        addSequential(new IntakeInOutTime(false, Constants.IntakeWheelShootTime, Constants.IntakeMaximumRPM));
 
         // Set the intake and elevator to the home position for teleoperated period
         homeIntakeAndElevator();

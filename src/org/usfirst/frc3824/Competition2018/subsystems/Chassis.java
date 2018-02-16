@@ -238,7 +238,7 @@ public class Chassis extends Subsystem
     public double getUltrasonicDistance()
     {
         // Return the distance in inches
-        return (Constants.ULTRASONIC_A * ultrasonic.getVoltage()) + Constants.ULTRASONIC_B;
+        return (Constants.Ultrasonic_A * ultrasonic.getVoltage()) + Constants.Ultrasonic_B;
     }
 
     /*********************************************************************
