@@ -105,24 +105,6 @@ public class Intake extends Subsystem
         angle.configMotionCruiseVelocity(Constants.IntakeAngleCruiseVelocity, Constants.TalonInitialCommunicationTimeout);
         angle.configMotionAcceleration(Constants.IntakeAngleAcceleration, Constants.TalonInitialCommunicationTimeout);
         
-        
-        /**********************************************************************************/
-//        angle.set(ControlMode.Position, 0);
-//        angle.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
-//        angle.setSensorPhase(false);
-//
-//        angle.configClosedloopRamp(0, Constants.TalonInitialCommunicationTimeout);
-//        
-//        angle.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
-//        angle.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
-//        angle.configPeakOutputForward(Constants.IntakeAnglePIDMaximum, Constants.TalonInitialCommunicationTimeout);
-//        angle.configPeakOutputReverse(Constants.IntakeAnglePIDMinimum, Constants.TalonInitialCommunicationTimeout);
-//
-//        angle.config_kF(0, Constants.IntakeAnglePIDParamF, Constants.TalonInitialCommunicationTimeout);
-//        angle.config_kP(0, Constants.IntakeAnglePIDParamP, Constants.TalonInitialCommunicationTimeout);
-//        angle.config_kI(0, Constants.IntakeAnglePIDParamI, Constants.TalonInitialCommunicationTimeout);
-//        angle.config_kD(0, Constants.IntakeAnglePIDParamD, Constants.TalonInitialCommunicationTimeout);
-         
         // Ensure the intake wheels are not moving
         stopIntake();
         

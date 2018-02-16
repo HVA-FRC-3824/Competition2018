@@ -77,8 +77,6 @@ public class Chassis extends Subsystem
     {
         // Reset the drive encoders
         resetEncoders();
-        
-        System.out.println("*** Intake Constructor ***");
     }
 
     /*********************************************************************
@@ -240,9 +238,6 @@ public class Chassis extends Subsystem
     public double getUltrasonicDistance()
     {
         // Return the distance in inches
-//        return ((Constants.ULTRASONIC_Y2 - Constants.ULTRASONIC_Y1) / 
-//                (Constants.ULTRASONIC_X2 - Constants.ULTRASONIC_X1)) * 
-//                (ultrasonic.getVoltage() - Constants.ULTRASONIC_X1) + Constants.ULTRASONIC_Y1;
         return (Constants.ULTRASONIC_A * ultrasonic.getVoltage()) + Constants.ULTRASONIC_B;
     }
 
