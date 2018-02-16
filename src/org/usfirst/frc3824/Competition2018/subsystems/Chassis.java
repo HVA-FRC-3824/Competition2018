@@ -230,7 +230,8 @@ public class Chassis extends Subsystem
     public double getEncoderDistance()
     {
         // Return the maximum encoder distance in case the other is not working
-        return Math.max(rightDriveEncoder.getDistance(), leftDriveEncoder.getDistance());
+//      return Math.max(rightDriveEncoder.getDistance(), leftDriveEncoder.getDistance());
+        return leftDriveEncoder.getDistance();
     }
 
     /*********************************************************************
