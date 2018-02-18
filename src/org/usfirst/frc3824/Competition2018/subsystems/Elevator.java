@@ -203,7 +203,5 @@ public class Elevator extends Subsystem
     public void stop()
     {
         liftMaster.set(0);
-
-        SmartDashboard.putNumber("motorPercent", 0);
     }
 }

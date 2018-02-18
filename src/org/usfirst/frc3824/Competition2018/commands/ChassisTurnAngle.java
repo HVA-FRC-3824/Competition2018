@@ -55,8 +55,6 @@ public class ChassisTurnAngle extends Command
     @Override
     protected void initialize()
     {
-        SmartDashboard.putBoolean("initialize", true);
-        
         // Initialize the chassis turn angle PID
         Robot.chassis.turnAnglePID(m_turnDegrees, m_power);
 

@@ -222,7 +222,7 @@ public class Chassis extends Subsystem
      *********************************************************************/
     public boolean gyroWithin(double threshold)
     {
-        SmartDashboard.putNumber("Within Gyro Error", angleGyroPID.getError());
+//        SmartDashboard.putNumber("Within Gyro Error", angleGyroPID.getError());
 
         // Return if the gyro is within the specified range
         return Math.abs(angleGyroPID.getError()) < threshold;

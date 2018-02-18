@@ -924,7 +924,7 @@ Children:
           - {name: power, type: double, value: '-0.4'}
           - {name: angle, type: double, value: '75'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ChassisDriveDistance
   - Children: []
@@ -937,6 +937,8 @@ Children:
         validators: null
         value:
         - !!robotbuilder.data.properties.ParameterDescriptor {name: distance, type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: inRangePower,
+          type: double}
         - !!robotbuilder.data.properties.ParameterDescriptor {name: power, type: double}
         - !!robotbuilder.data.properties.ParameterDescriptor {name: angle, type: double}
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
@@ -952,7 +954,8 @@ Children:
           name: TWENTY_INCHES
           parameters:
           - {name: distance, type: double, value: '36.0'}
-          - {name: power, type: double, value: '0.4'}
+          - {name: inRangePower, type: double, value: '0.4'}
+          - {name: power, type: double, value: '0.0'}
           - {name: angle, type: double, value: '0.0'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
         name: Button on SmartDashboard, validators: null, value: false}
@@ -984,7 +987,7 @@ Children:
           - {name: turnDegrees, type: double, value: '90'}
           - {name: power, type: double, value: '0'}
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: true}
+        name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: ChassisTurnAngle
   - Children: []
@@ -1311,6 +1314,28 @@ Children:
         name: Button on SmartDashboard, validators: null, value: false}
     Base: Command
     Name: Delay
+  - Children: []
+    Properties:
+      Autonomous Selection: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Autonomous Selection, validators: null, value: false}
+      Parameters: !!robotbuilder.data.properties.ParametersProperty
+        default: []
+        name: Parameters
+        validators: null
+        value: []
+      Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
+        name: Run When Disabled, validators: null, value: false}
+      Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
+        name: Requires, type: Subsystem, validators: null, value: None}
+      Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty
+        default: &id020 []
+        name: Parameter presets
+        validators: null
+        value: *id020
+      Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
+        name: Button on SmartDashboard, validators: null, value: false}
+    Base: Command
+    Name: WaitForGameData
   Properties: {}
   Base: Commands
   Name: Commands

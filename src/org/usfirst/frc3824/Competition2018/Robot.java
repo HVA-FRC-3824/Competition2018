@@ -10,6 +10,8 @@
 
 package org.usfirst.frc3824.Competition2018;
 
+import edu.wpi.cscore.UsbCamera;
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -92,6 +94,14 @@ public class Robot extends TimedRobot
         oneTwoCubeChooser.addObject("Scale", "Scale");
         oneTwoCubeChooser.addObject("Switch", "Switch");
         SmartDashboard.putData("Second Cube Placement", oneTwoCubeChooser);
+        
+        UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
+
+        // Setup the camera
+        camera.setResolution(320, 240);
+        camera.setBrightness(30);
+        camera.setExposureManual(40);
+//        camera.setWhiteBalanceManual(value);
     }
 
     /*********************************************************************

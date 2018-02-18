@@ -172,7 +172,7 @@ public final class Constants
     public static double  AutoSwitchOrScaleToNextCube2Power           = 0.4;
     
     public static double  AutoSwitchOrScaleToCubeDistance             = 5.0;   // Inches
-    public static double  AutoSwitchOrScaleToCubePower                = 0.4;
+    public static double  AutoSwitchOrScaleToCubePower                = 0.6;
     
     public static double  AutoSwitchOrScaleRamSwitchDistance          = 5.0;   // Feet
     public static double  AutoSwitchOrScaleRamSwitchPower             = 0.3;
