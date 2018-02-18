@@ -15,9 +15,9 @@ public final class Constants
     public static double  ChassisTurnThreshold                = 2.0;
     public static double  ChassisTurnTimeOutTime              = 1.0;
     
-    public static double  TurnAngle_P                         = 0.015;
-    public static double  TurnAngle_I                         = 0.002;
-    public static double  TurnAngle_D                         = 0.002;
+    public static double  TurnAngle_P                         = 0.04; //0.01
+    public static double  TurnAngle_I                         = 0.000; //0.002
+    public static double  TurnAngle_D                         = 0.1; //0.002
 
     public static double  TurnAngle_MinimumOutput             = -0.4;
     public static double  TurnAngle_MaximumOutput             = 0.4;
@@ -40,8 +40,8 @@ public final class Constants
     public static double  Ultrasonic_A                        = 108.23;
     public static double  Ultrasonic_B                        = -1.364;
 
-    public static double  UltrasonicDriveDistanceRange        = 10.0;
-    public static double  UltrasonicDriveDistancePower        = 0.3;
+    public static double  UltrasonicDriveDistanceRange        = 18.0;
+    public static double  UltrasonicDriveDistancePower        = 0.2;
 
     // ***************************************************************************************
     // Intake angle constants
@@ -72,10 +72,14 @@ public final class Constants
     // ***************************************************************************************
 
     public static double  IntakeMaximumRPM                    = 500;
+    
+    public static double  IntakeSwitchRPM                     = 200;
+    
+    public static double  IntakeWheelInRPM                    = 300;
 
     public static double  IntakeWheelHoldVoltage              = 0.1;
     
-    public static double  IntakeWheelShootTime                = 2.0;
+    public static double  IntakeWheelShootTime                = 1.0;
 
     public static double  IntakeWheelPIDParamF                = 0.075;
     public static double  IntakeWheelPIDParamP                = 0.075;
@@ -96,6 +100,7 @@ public final class Constants
     public static int     ElevatorCruiseVelocity              = 1000 * 2;
     public static int     ElevatorAcceleration                = 1000 * 2;
 
+    public static double  ElevatorBottomPosition              = 21000;
     public static double  ElevatorStartPosition               = 0;
     public static double  ElevatorChutePosition               = 0;
     public static double  ElevatorSwitchPosition              = -10000;
@@ -139,7 +144,7 @@ public final class Constants
     // Autonomous constants: switch or scale
     // ***************************************************************************************
 
-    public static double  AutoSwitchOrScaleDriveSwitchDistance        = 11.0;  // Feet
+    public static double  AutoSwitchOrScaleDriveSwitchDistance        = 12.0;  // Feet
     public static double  AutoSwitchOrScaleDriveSwitchPower           = 0.8;
             
     public static double  AutoSwitchOrScaleDriveScaleDistance         = 24.0;  // Feet
@@ -148,15 +153,34 @@ public final class Constants
     public static double  AutoSwitchOrScaleDriveOppositeScaleDistance = 18.0;  // Feet
     public static double  AutoSwitchOrScaleDriveOppositeScalePower    = 0.8;
     
-    public static double  AutoSwitchOrScaleDriveAcrossFieldDistance   = 18.0;  // Feet
+    public static double  AutoSwitchOrScaleDriveAcrossFieldDistance   = 17.0;  // Feet
     public static double  AutoSwitchOrScaleDriveAcrossFieldPower      = 0.8;
     
-    public static double  AutoSwitchOrScaleDriveScaleShortDistance    = 2.0;   // Feet
+    public static double  AutoSwitchOrScaleDriveScaleShortDistance    = 5.0;   // Feet
     public static double  AutoSwitchOrScaleDriveScaleShortPower       = 0.4;
     
-    public static double  AutoSwitchOrScaleToSwitchDistance           = 10.0;  // Inches
-    public static double  AutoSwitchOrScaleToSwitchPower              = 0.4;
+    public static double  AutoSwitchOrScaleToSwitchDistance           = 6.0;  // Inches
+    public static double  AutoSwitchOrScaleToSwitchPower              = 0.6;
     
     public static double  AutoSwitchOrScaleBackUpDistance             = 2.0;   // Feet
     public static double  AutoSwitchOrScaleBackUpPower                = -0.6;  // Backing up
+    
+    public static double  AutoSwitchOrScaleToNextCube1Distance        = 8.0;   // Feet
+    public static double  AutoSwitchOrScaleToNextCube1Power           = -0.6;
+    
+    public static double  AutoSwitchOrScaleToNextCube2Distance        = 2.0;   // Feet
+    public static double  AutoSwitchOrScaleToNextCube2Power           = 0.4;
+    
+    public static double  AutoSwitchOrScaleToCubeDistance             = 5.0;   // Inches
+    public static double  AutoSwitchOrScaleToCubePower                = 0.4;
+    
+    public static double  AutoSwitchOrScaleRamSwitchDistance          = 5.0;   // Feet
+    public static double  AutoSwitchOrScaleRamSwitchPower             = 0.3;
+    public static double  AutoSwitchOrScaleRamSwitchTimeout           = 1.0;   // Seconds
+    
+    public static double  AutoSwitchOrScaleBackupWithCubeDistance     = 4.0;
+    public static double  AutoSwitchOrScaleBackupWithCubePower        = -0.4;
+    
+    public static double  AutoSwitchOrScaleToScaleWithCubeDistance    = 8.0;
+    public static double  AutoSwitchOrScaleToScaleWithCubePower       = 0.6;
 }

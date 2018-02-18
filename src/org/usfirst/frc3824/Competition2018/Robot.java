@@ -39,6 +39,7 @@ public class Robot extends TimedRobot
     Command                 autonomousCommand          = null;
     SendableChooser<String> autonomousCommandSelection = new SendableChooser<>();
     SendableChooser<String> startPositionChooser       = new SendableChooser<>();
+    SendableChooser<String> oneTwoCubeChooser          = new SendableChooser<>();
 
     public static OI        oi;
     
@@ -86,6 +87,11 @@ public class Robot extends TimedRobot
         startPositionChooser.addObject("Left", "Left");
         startPositionChooser.addObject("Right", "Right");
         SmartDashboard.putData("Start Position", startPositionChooser);
+        
+        oneTwoCubeChooser.addDefault("None", "None");
+        oneTwoCubeChooser.addObject("Scale", "Scale");
+        oneTwoCubeChooser.addObject("Switch", "Switch");
+        SmartDashboard.putData("Second Cube Placement", oneTwoCubeChooser);
     }
 
     /*********************************************************************
@@ -129,7 +135,7 @@ public class Robot extends TimedRobot
                 break;
 
             case "Switch Or Scale":
-                autonomousCommand = new AutonomousSwitchOrScale(startPositionChooser.getSelected());
+                autonomousCommand = new AutonomousSwitchOrScale(startPositionChooser.getSelected(), oneTwoCubeChooser.getSelected());
                 break;
             }
 
@@ -181,58 +187,38 @@ public class Robot extends TimedRobot
      *********************************************************************/
     public void showInformationOnDashboard()
     {
-        // SmartDashboard.putNumber("rightEncoder", chassis.getRightEncoder());
-        // SmartDashboard.putNumber("leftEncoder", chassis.getLeftEncoder());
-        //
-        // SmartDashboard.putNumber("rightDistance",
-        // chassis.getRightDistance());
-        // SmartDashboard.putNumber("leftDistance", chassis.getLeftDistance());
-        //
-        // SmartDashboard.putNumber("gyro", chassis.getCurrentHeading());
-        // SmartDashboard.putNumber("gyroTurnError",
-        // chassis.getAngleTurnError());
-        //
-        // SmartDashboard.putNumber("Elevator Error",
-        // Robot.elevator.getPID_Error());
-        // SmartDashboard.putNumber("Elevator MotorPercent",
-        // Robot.elevator.getMotorPercent());
-        // SmartDashboard.putNumber("Elevator Velocity",
-        // Robot.elevator.getVelocity());
-        // SmartDashboard.putNumber("Elevator Setpoint",
-        // Robot.elevator.getPID_Setpoint());
-        // SmartDashboard.putNumber("Elevator Position",
-        // Robot.elevator.getPosition());
-        //
-        // SmartDashboard.putNumber("Intake Angle Error",
-        // Robot.intake.getPID_ErrorAngle());
-        // SmartDashboard.putNumber("Intake Angle MotorPercent",
-        // Robot.intake.getMotorPercentAngle());
-        // SmartDashboard.putNumber("Intake Angle Setpoint",
-        // Robot.intake.getPID_SetpointAngle());
-        // SmartDashboard.putNumber("Intake Angle Position",
-        // Robot.intake.getPositionAngle());
-        // SmartDashboard.putNumber("Intake Angle Velocity",
-        // Robot.intake.getVelocityAngle());
-        //
-        // SmartDashboard.putNumber("Intake Right Error",
-        // Robot.intake.getPID_ErrorRight());
-        // SmartDashboard.putNumber("Intake Right MotorPercent",
-        // Robot.intake.getMotorPercentRight());
-        // SmartDashboard.putNumber("Intake Right Setpoint",
-        // Robot.intake.getPID_SetpointRight());
-        // SmartDashboard.putNumber("Intake Right Velocity",
-        // Robot.intake.getVelocityRight());
-        //
-        // SmartDashboard.putNumber("Intake Left Error",
-        // Robot.intake.getPID_ErrorLeft());
-        // SmartDashboard.putNumber("Intake Left MotorPercent",
-        // Robot.intake.getMotorPercentLeft());
-        // SmartDashboard.putNumber("Intake Left Setpoint",
-        // Robot.intake.getPID_SetpointLeft());
-        // SmartDashboard.putNumber("Intake Left Velocity",
-        // Robot.intake.getVelocityLeft());
-        //
-        // SmartDashboard.putNumber("UltraSonic Distance Inches",
-        // Robot.chassis.getUltrasonicDistance());
+         SmartDashboard.putNumber("rightEncoder", chassis.getRightEncoder());
+         SmartDashboard.putNumber("leftEncoder", chassis.getLeftEncoder());
+         SmartDashboard.putNumber("rightDistance", chassis.getRightDistance());
+         SmartDashboard.putNumber("leftDistance", chassis.getLeftDistance());
+        
+         SmartDashboard.putNumber("gyro", chassis.getCurrentHeading());
+//         SmartDashboard.putNumber("gyroTurnError", chassis.getAngleTurnError());
+//        
+//         SmartDashboard.putNumber("Elevator Error", Robot.elevator.getPID_Error());
+//         SmartDashboard.putNumber("Elevator MotorPercent", Robot.elevator.getMotorPercent());
+//         SmartDashboard.putNumber("Elevator Velocity", Robot.elevator.getVelocity());
+//         SmartDashboard.putNumber("Elevator Setpoint", Robot.elevator.getPID_Setpoint());
+         SmartDashboard.putNumber("Elevator Position", Robot.elevator.getPosition());
+//        
+//         SmartDashboard.putNumber("Intake Angle Error", Robot.intake.getPID_ErrorAngle());
+//         SmartDashboard.putNumber("Intake Angle MotorPercent", Robot.intake.getMotorPercentAngle());
+//         SmartDashboard.putNumber("Intake Angle Setpoint", Robot.intake.getPID_SetpointAngle());
+//         SmartDashboard.putNumber("Intake Angle Position", Robot.intake.getPositionAngle());
+//         SmartDashboard.putNumber("Intake Angle Velocity", Robot.intake.getVelocityAngle());
+//        
+//         SmartDashboard.putNumber("Intake Right Error", Robot.intake.getPID_ErrorRight());
+//         SmartDashboard.putNumber("Intake Right MotorPercent", Robot.intake.getMotorPercentRight());
+//         SmartDashboard.putNumber("Intake Right Setpoint", Robot.intake.getPID_SetpointRight());
+//         SmartDashboard.putNumber("Intake Right Velocity", Robot.intake.getVelocityRight());
+//        
+//         SmartDashboard.putNumber("Intake Left Error", Robot.intake.getPID_ErrorLeft());
+//         SmartDashboard.putNumber("Intake Left MotorPercent", Robot.intake.getMotorPercentLeft());
+//         SmartDashboard.putNumber("Intake Left Setpoint", Robot.intake.getPID_SetpointLeft());
+//         SmartDashboard.putNumber("Intake Left Velocity", Robot.intake.getVelocityLeft());
+        
+         SmartDashboard.putNumber("UltraSonic Distance Inches", Robot.chassis.getUltrasonicDistance());
+         SmartDashboard.putNumber("navx Gyro Angle: ", chassis.getNavxAngle());
+         SmartDashboard.putNumber("navx Gyro Error", chassis.angleGyroPID.getError());
     }
 }

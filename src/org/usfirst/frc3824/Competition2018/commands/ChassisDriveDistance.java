@@ -72,10 +72,15 @@ public class ChassisDriveDistance extends Command
     {
         // Slow down when reaching the desired position
         // Note: Distance is measured in feet
-        if (Math.abs(m_distance - Math.abs(Robot.chassis.getEncoderDistance())) < 1.0)
+        if (Math.abs(m_distance - Math.abs(Robot.chassis.getEncoderDistance())) < 2.0)
         {
+            if (m_power < 0.0)
+                Robot.chassis.updateMagnitude(-0.2);
+            else
+                Robot.chassis.updateMagnitude(0.2);
+            
             System.out.println("Change Magnitude");
-            Robot.chassis.updateMagnitude(0.2);
+
         }
     }
 
