@@ -66,7 +66,9 @@ public class IntakeTeleop extends Command
         
         // Determine the intake wheel speed based on the joystick
         double intakeSpeed = -Robot.oi.opJoystick.getY();
-        Robot.intake.setRPM(true, intakeSpeed * Constants.IntakeMaximumRPM);
+//        Robot.intake.setRPM(true, intakeSpeed * Constants.IntakeMaximumRPM);
+        Robot.intake.setRPMRight(true, (intakeSpeed * Constants.IntakeMaximumRPM) / 2);
+        Robot.intake.setRPMLeft(true, intakeSpeed * Constants.IntakeMaximumRPM);
         
 //        SmartDashboard.putNumber("Intake Wheel Speed", intakeSpeed * Constants.IntakeMaximumRPM);
     }

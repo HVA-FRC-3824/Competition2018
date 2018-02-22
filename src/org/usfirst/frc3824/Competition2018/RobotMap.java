@@ -64,11 +64,11 @@ public class RobotMap
         chassisGyro.setSensitivity(0.007);
         chassisLeftDriveEncoder = new Encoder(0, 1, false, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "LeftDriveEncoder", chassisLeftDriveEncoder);
-        chassisLeftDriveEncoder.setDistancePerPulse(0.00458716);
+        chassisLeftDriveEncoder.setDistancePerPulse(0.0065789);
         chassisLeftDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         chassisRightDriveEncoder = new Encoder(2, 3, true, EncodingType.k4X);
         LiveWindow.addSensor("Chassis", "RightDriveEncoder", chassisRightDriveEncoder);
-        chassisRightDriveEncoder.setDistancePerPulse(0.00458716);
+        chassisRightDriveEncoder.setDistancePerPulse(0.0065789);
         chassisRightDriveEncoder.setPIDSourceType(PIDSourceType.kRate);
         chassisDriveR1 = new PWMVictorSPX(0);
         LiveWindow.addActuator("Chassis", "DriveR1", (PWMVictorSPX) chassisDriveR1);

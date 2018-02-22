@@ -374,6 +374,48 @@ public class Intake extends Subsystem
     }
     
     /*********************************************************************
+     * Uses PIDs with Talon SRX encoder feedback to set the RPM of the 
+     * right intake wheels to a specified velocity
+     *********************************************************************/
+    public void setRPMRight(boolean direction, double RPM)
+    {
+        /* Speed mode */
+        /*
+         * 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
+         * velocity setpoint is in units/100ms 500 RPM is maximum wheel speed
+         */
+        double targetVelocity = RPM * 4096 / 600;
+
+        // Determine the wheel direction
+        if (direction == true)
+            targetVelocity = -targetVelocity;
+
+        // Set the wheel PID velocity setpoint
+        right.set(ControlMode.Velocity, targetVelocity);
+    }
+    
+    /*********************************************************************
+     * Uses PIDs with Talon SRX encoder feedback to set the RPM of the 
+     * left intake wheels to a specified velocity
+     *********************************************************************/
+    public void setRPMLeft(boolean direction, double RPM)
+    {
+        /* Speed mode */
+        /*
+         * 4096 Units/Rev * 500 RPM / 600 100ms/min in either direction:
+         * velocity setpoint is in units/100ms 500 RPM is maximum wheel speed
+         */
+        double targetVelocity = RPM * 4096 / 600;
+
+        // Determine the wheel direction
+        if (direction == true)
+            targetVelocity = -targetVelocity;
+
+        // Set the wheel PID velocity setpoint
+        left.set(ControlMode.Velocity, targetVelocity);
+    }
+    
+    /*********************************************************************
      * Sets voltage percent to intake wheels
      *********************************************************************/
     public void setWheelVoltage(boolean direction, double power)
@@ -395,7 +437,8 @@ public class Intake extends Subsystem
         if (positionAngle < Constants.IntakeMinimumAngle)
         {
             positionAngle = Constants.IntakeMinimumAngle;
-        } else if (positionAngle > Constants.IntakeMaximumAngle)
+        } 
+        else if (positionAngle > Constants.IntakeMaximumAngle)
         {
             positionAngle = Constants.IntakeMaximumAngle;
         }
@@ -403,7 +446,6 @@ public class Intake extends Subsystem
         double calculatedAngle = (positionAngle * (Constants.IntakeAngleEncoderYIntercept / 90)) + Constants.IntakeAngleEncoderYIntercept;  
         angle.set(ControlMode.MotionMagic, calculatedAngle);
         
-        // angle.setSelectedSensorPosition((int) calculatedAngle, 0, 0);
         SmartDashboard.putNumber("Calculated Angle", calculatedAngle);
     }
 }

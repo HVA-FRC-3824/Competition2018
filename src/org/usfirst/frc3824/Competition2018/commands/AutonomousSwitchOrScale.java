@@ -292,7 +292,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
         addParallel(new IntakeRotate(Constants.IntakePlaceAngle));
 
         // Set elevator in position to receive new cube
-        addParallel(new ElevatorUpDownPosition(Constants.ElevatorBottomPosition));
+        addParallel(new ElevatorUpDownPosition(Constants.ElevatorCubeInPosition));
 
         // Drive backwards to get ready to turn towards new cube
         addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleToNextCube1Distance, Constants.AutoSwitchOrScaleToNextCube1Power, angle));
