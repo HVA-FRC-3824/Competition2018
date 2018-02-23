@@ -2,7 +2,7 @@ package org.usfirst.frc3824.Competition2018;
 
 public final class Constants
 {
-    static final boolean competitionRobot                     = true;
+    static final boolean competitionRobot                     = false;
 
     // ***************************************************************************************
     // TalonSRX set timeout (ms)
@@ -179,6 +179,7 @@ public final class Constants
     public static double  ChassisTurnThreshold                        = 2.0;
     public static double  ChassisTurnTimeOutTime                      = 1.0;
 
+    public static double  TurnAngle_F                                 = 0.0;
     public static double  TurnAngle_P                                 = 0.06;   // 0.4  // 0.01
     public static double  TurnAngle_I                                 = 0.000;  // 0.0  // 0.002
     public static double  TurnAngle_D                                 = 0.15;   // 0.1  // 0.002
@@ -190,6 +191,7 @@ public final class Constants
     // Chassis drive straight constants
     // ***************************************************************************************
 
+    public static double  DrivetrainDriveStraight_F                   = 0.0;
     public static double  DrivetrainDriveStraight_P                   = 0.05;
     public static double  DrivetrainDriveStraight_I                   = 0.00005;
     public static double  DrivetrainDriveStraight_D                   = 0.0;

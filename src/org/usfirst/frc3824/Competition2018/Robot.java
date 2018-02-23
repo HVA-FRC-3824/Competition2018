@@ -38,10 +38,13 @@ import org.usfirst.frc3824.Competition2018.subsystems.*;
  *********************************************************************/
 public class Robot extends TimedRobot
 {
+    private static Command  changePIDCommand           = null;
     Command                 autonomousCommand          = null;
     SendableChooser<String> autonomousCommandSelection = new SendableChooser<>();
     SendableChooser<String> startPositionChooser       = new SendableChooser<>();
     SendableChooser<String> oneTwoCubeChooser          = new SendableChooser<>();
+    
+    private static SendableChooser<String> changePIDChooser = new SendableChooser<>();
 
     public static OI        oi;
     
@@ -102,6 +105,14 @@ public class Robot extends TimedRobot
         oneTwoCubeChooser.addObject("Scale", "Scale");
         SmartDashboard.putData("Second Cube Placement", oneTwoCubeChooser);
         
+        // Add a selector for changing which subsystem change PID command will write to
+        changePIDChooser.addDefault("Turn Angle", "Turn Angle");
+        changePIDChooser.addObject("Elevator", "Elevator");
+        changePIDChooser.addObject("Intake Rotator", "Intake Rotator");
+        changePIDChooser.addObject("Intake Wheel", "Intake Wheel");
+        changePIDChooser.addObject("Drive Straight", "Drive Straight");
+        SmartDashboard.putData("PID Subsystem", changePIDChooser);
+        
         // Setup the USB camera server
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
 
@@ -131,6 +142,8 @@ public class Robot extends TimedRobot
 
         // Show robot information on the SmartDashboard
         showInformationOnDashboard();
+        
+        // Shows PID change selector
     }
 
     /*********************************************************************
@@ -198,7 +211,12 @@ public class Robot extends TimedRobot
         // Show robot information on the SmartDashboard
         showInformationOnDashboard();
     }
-
+    
+    public static String getChangePIDChooser()
+    {
+        return changePIDChooser.getSelected();
+    }
+    
     /*********************************************************************
      * Show robot information on the SmartDashboard
      *********************************************************************/
