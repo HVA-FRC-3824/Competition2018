@@ -391,6 +391,14 @@ public class Chassis extends Subsystem
     /*********************************************************************
     *
     *********************************************************************/
+    public void resetNavXGyro()
+    {      
+        ahrs.reset();
+    }
+    
+    /*********************************************************************
+    *
+    *********************************************************************/
     public void chassisStop()
     {
         // Ensure the robot is stopped
@@ -404,17 +412,14 @@ public class Chassis extends Subsystem
     
     public void setTurnAnglePID()
     {
-        turnAngle_F = SmartDashboard.getNumber("Turn Angle F", Constants.TurnAngle_F);
-        turnAngle_P = SmartDashboard.getNumber("Turn Angle P", Constants.TurnAngle_P);
-        turnAngle_I = SmartDashboard.getNumber("Turn Angle I", Constants.TurnAngle_I);
-        turnAngle_D = SmartDashboard.getNumber("Turn Angle D", Constants.TurnAngle_D);
-    }
-    
-    public void setDriveStraightPID()
-    {
-        drivetrainDriveStraight_F = SmartDashboard.getNumber("Drive Straight F", Constants.DrivetrainDriveStraight_F);
-        drivetrainDriveStraight_P = SmartDashboard.getNumber("Drive Straight P", Constants.DrivetrainDriveStraight_P);
-        drivetrainDriveStraight_I = SmartDashboard.getNumber("Drive Straight I", Constants.DrivetrainDriveStraight_I);
-        drivetrainDriveStraight_D = SmartDashboard.getNumber("Drive Straight D", Constants.DrivetrainDriveStraight_D);
+        turnAngle_F = SmartDashboard.getNumber("F", Constants.TurnAngle_F);
+        turnAngle_P = SmartDashboard.getNumber("P", Constants.TurnAngle_P);
+        turnAngle_I = SmartDashboard.getNumber("I", Constants.TurnAngle_I);
+        turnAngle_D = SmartDashboard.getNumber("D", Constants.TurnAngle_D);
+        
+        angleGyroPID.setF(turnAngle_F);
+        angleGyroPID.setF(turnAngle_P);
+        angleGyroPID.setF(turnAngle_I);
+        angleGyroPID.setF(turnAngle_D);
     }
 }

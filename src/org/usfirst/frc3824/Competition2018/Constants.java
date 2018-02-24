@@ -134,14 +134,14 @@ public final class Constants
             IntakeAnglePIDMaximum        = 0.75;
             IntakeAnglePIDMinimum        = -0.75;
             
-            IntakeAngleEncoderYIntercept = 245000;
+            IntakeAngleEncoderYIntercept = 8000;
             IntakeAnglePIDParamF         = 0.0;
             IntakeAnglePIDParamP         = 0.01;
             IntakeAnglePIDParamI         = 0.00001;
             IntakeAnglePIDParamD         = 0.0;
 
-            IntakeAngleCruiseVelocity    = 18800;
-            IntakeAngleAcceleration      = 37600;
+            IntakeAngleCruiseVelocity    = 18800 * 4;
+            IntakeAngleAcceleration      = 37600 * 4;
             
             // ***************************************************************************************
             // Elevator Constants
@@ -176,7 +176,8 @@ public final class Constants
     // Chassis turn constants
     // ***************************************************************************************
 
-    public static double  ChassisTurnThreshold                        = 2.0;
+    public static double  ChassisTurnThreshold                        = 5.0;
+    public static double  ChassisTurnTimeOutTimeDefault               = 3.0;
     public static double  ChassisTurnTimeOutTime                      = 1.0;
 
     public static double  TurnAngle_F                                 = 0.0;
@@ -218,13 +219,14 @@ public final class Constants
     public static double  IntakeSwitchRPM                             = 200;
 
     public static double  IntakeWheelInRPM                            = 300;
+    public static double  IntakeWheelInTime                           = 3;
 
     public static double  IntakeWheelHoldVoltage                      = 0.1;
 
     public static double  IntakeWheelShootTime                        = 1.0;
 
-    public static double  IntakeWheelPIDParamF                        = 0.0;
-    public static double  IntakeWheelPIDParamP                        = 0.5;
+    public static double  IntakeWheelPIDParamF                        = 0.1;
+    public static double  IntakeWheelPIDParamP                        = 0.2;
     public static double  IntakeWheelPIDParamI                        = 0.001;
     public static double  IntakeWheelPIDParamD                        = 0.0;
 

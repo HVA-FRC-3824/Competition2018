@@ -46,6 +46,8 @@ public class Intake extends Subsystem
     private double intakeAnglePIDParamP = Constants.IntakeAnglePIDParamP;
     private double intakeAnglePIDParamI = Constants.IntakeAnglePIDParamI;
     private double intakeAnglePIDParamD = Constants.IntakeAnglePIDParamD;
+    private int intakeAngleCruiseVelocity = Constants.IntakeAngleCruiseVelocity;
+    private int intakeAngleAcceleration = Constants.IntakeAngleAcceleration;
     
     private double intakeWheelPIDParamF = Constants.IntakeWheelPIDParamF;
     private double intakeWheelPIDParamP = Constants.IntakeWheelPIDParamP;
@@ -461,17 +463,37 @@ public class Intake extends Subsystem
     
     public void setIntakeRotatePID()
     {
-        intakeAnglePIDParamF = SmartDashboard.getNumber("Intake Angle F", Constants.IntakeAnglePIDParamF);
-        intakeAnglePIDParamP = SmartDashboard.getNumber("Intake Angle P", Constants.IntakeAnglePIDParamP);
-        intakeAnglePIDParamI = SmartDashboard.getNumber("Intake Angle I", Constants.IntakeAnglePIDParamI);
-        intakeAnglePIDParamD = SmartDashboard.getNumber("Intake Angle D", Constants.IntakeAnglePIDParamD);
+        intakeAnglePIDParamF = SmartDashboard.getNumber("F", Constants.IntakeAnglePIDParamF);
+        intakeAnglePIDParamP = SmartDashboard.getNumber("P", Constants.IntakeAnglePIDParamP);
+        intakeAnglePIDParamI = SmartDashboard.getNumber("I", Constants.IntakeAnglePIDParamI);
+        intakeAnglePIDParamD = SmartDashboard.getNumber("D", Constants.IntakeAnglePIDParamD);
+        intakeAngleCruiseVelocity = (int)SmartDashboard.getNumber("Velocity", Constants.IntakeAngleCruiseVelocity);
+        intakeAngleAcceleration = (int)SmartDashboard.getNumber("Acceleration", Constants.IntakeAngleAcceleration);
+        
+        angle.config_kF(0, intakeAnglePIDParamF, Constants.TalonInitialCommunicationTimeout);
+        angle.config_kP(0, intakeAnglePIDParamP, Constants.TalonInitialCommunicationTimeout);
+        angle.config_kI(0, intakeAnglePIDParamI, Constants.TalonInitialCommunicationTimeout);
+        angle.config_kD(0, intakeAnglePIDParamD, Constants.TalonInitialCommunicationTimeout);
+        
+        angle.configMotionCruiseVelocity(intakeAngleCruiseVelocity, Constants.TalonInitialCommunicationTimeout);
+        angle.configMotionAcceleration(intakeAngleAcceleration, Constants.TalonInitialCommunicationTimeout);
     }
     
     public void setIntakeWheelPID()
     {
-        intakeWheelPIDParamF = SmartDashboard.getNumber("Intake Wheel F", Constants.IntakeWheelPIDParamF);
-        intakeWheelPIDParamP = SmartDashboard.getNumber("Intake Wheel P", Constants.IntakeWheelPIDParamP);
-        intakeWheelPIDParamI = SmartDashboard.getNumber("Intake Wheel I", Constants.IntakeWheelPIDParamI);
-        intakeWheelPIDParamD = SmartDashboard.getNumber("Intake Wheel D", Constants.IntakeWheelPIDParamD);
+        intakeWheelPIDParamF = SmartDashboard.getNumber("F", Constants.IntakeWheelPIDParamF);
+        intakeWheelPIDParamP = SmartDashboard.getNumber("P", Constants.IntakeWheelPIDParamP);
+        intakeWheelPIDParamI = SmartDashboard.getNumber("I", Constants.IntakeWheelPIDParamI);
+        intakeWheelPIDParamD = SmartDashboard.getNumber("D", Constants.IntakeWheelPIDParamD);
+        
+        left.config_kF(0, intakeWheelPIDParamF, Constants.TalonInitialCommunicationTimeout);
+        left.config_kP(0, intakeWheelPIDParamP, Constants.TalonInitialCommunicationTimeout);
+        left.config_kI(0, intakeWheelPIDParamI, Constants.TalonInitialCommunicationTimeout);
+        left.config_kD(0, intakeWheelPIDParamD, Constants.TalonInitialCommunicationTimeout);
+        
+        right.config_kF(0, intakeWheelPIDParamF, Constants.TalonInitialCommunicationTimeout);
+        right.config_kP(0, intakeWheelPIDParamP, Constants.TalonInitialCommunicationTimeout);
+        right.config_kI(0, intakeWheelPIDParamI, Constants.TalonInitialCommunicationTimeout);
+        right.config_kD(0, intakeWheelPIDParamD, Constants.TalonInitialCommunicationTimeout);
     }
 }

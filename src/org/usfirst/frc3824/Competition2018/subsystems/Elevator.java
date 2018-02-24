@@ -44,6 +44,8 @@ public class Elevator extends Subsystem
     private double elevatorPIDParamP = Constants.ElevatorPIDParamP;
     private double elevatorPIDParamI = Constants.ElevatorPIDParamI;
     private double elevatorPIDParamD = Constants.ElevatorPIDParamD;
+    private int elevatorCruiseVelocity = Constants.ElevatorCruiseVelocity;
+    private int elevatorAcceleration = Constants.ElevatorAcceleration;
     
     /*********************************************************************
      *
@@ -211,9 +213,19 @@ public class Elevator extends Subsystem
     
     public void setElevatorPID()
     {
-        elevatorPIDParamF = SmartDashboard.getNumber("Elevator F", Constants.ElevatorPIDParamF);
-        elevatorPIDParamP = SmartDashboard.getNumber("Elevator P", Constants.ElevatorPIDParamP);
-        elevatorPIDParamI = SmartDashboard.getNumber("Elevator I", Constants.ElevatorPIDParamI);
-        elevatorPIDParamD = SmartDashboard.getNumber("Elevator D", Constants.ElevatorPIDParamD);
+        elevatorPIDParamF = SmartDashboard.getNumber("F", Constants.ElevatorPIDParamF);
+        elevatorPIDParamP = SmartDashboard.getNumber("P", Constants.ElevatorPIDParamP);
+        elevatorPIDParamI = SmartDashboard.getNumber("I", Constants.ElevatorPIDParamI);
+        elevatorPIDParamD = SmartDashboard.getNumber("D", Constants.ElevatorPIDParamD);
+        elevatorCruiseVelocity = (int)(SmartDashboard.getNumber("Velocity", Constants.ElevatorCruiseVelocity));
+        elevatorAcceleration = (int)(SmartDashboard.getNumber("Acceleration", Constants.ElevatorAcceleration));
+        
+        liftMaster.config_kF(0, elevatorPIDParamF, Constants.TalonInitialCommunicationTimeout);
+        liftMaster.config_kP(0, elevatorPIDParamP, Constants.TalonInitialCommunicationTimeout);
+        liftMaster.config_kI(0, elevatorPIDParamI, Constants.TalonInitialCommunicationTimeout);
+        liftMaster.config_kD(0, elevatorPIDParamD, Constants.TalonInitialCommunicationTimeout);
+        
+        liftMaster.configMotionCruiseVelocity(elevatorCruiseVelocity, Constants.TalonInitialCommunicationTimeout);
+        liftMaster.configMotionAcceleration(elevatorAcceleration, Constants.TalonInitialCommunicationTimeout);
     }
 }

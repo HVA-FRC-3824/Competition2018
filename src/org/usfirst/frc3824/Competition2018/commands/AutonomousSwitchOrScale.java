@@ -306,7 +306,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
         addSequential(new ChassisTurnAngle(angle, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Set intake inwards
-        addParallel(new IntakeInOut(true, Constants.IntakeWheelInRPM));
+        addParallel(new IntakeInOutTime(true, Constants.IntakeWheelInTime , Constants.IntakeWheelInRPM));
 
         // Drive into new cube
         addSequential(new ChassisDriveRange(Constants.AutoSwitchOrScaleToCubeDistance, 0.4,

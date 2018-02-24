@@ -43,8 +43,6 @@ public class Robot extends TimedRobot
     SendableChooser<String> autonomousCommandSelection = new SendableChooser<>();
     SendableChooser<String> startPositionChooser       = new SendableChooser<>();
     SendableChooser<String> oneTwoCubeChooser          = new SendableChooser<>();
-    
-    private static SendableChooser<String> changePIDChooser = new SendableChooser<>();
 
     public static OI        oi;
     
@@ -105,13 +103,13 @@ public class Robot extends TimedRobot
         oneTwoCubeChooser.addObject("Scale", "Scale");
         SmartDashboard.putData("Second Cube Placement", oneTwoCubeChooser);
         
-        // Add a selector for changing which subsystem change PID command will write to
-        changePIDChooser.addDefault("Turn Angle", "Turn Angle");
-        changePIDChooser.addObject("Elevator", "Elevator");
-        changePIDChooser.addObject("Intake Rotator", "Intake Rotator");
-        changePIDChooser.addObject("Intake Wheel", "Intake Wheel");
-        changePIDChooser.addObject("Drive Straight", "Drive Straight");
-        SmartDashboard.putData("PID Subsystem", changePIDChooser);
+        // Set up FPID, velocity, and acceleration for SmartDashboard PID setting
+        SmartDashboard.putNumber("F", 0.0);
+        SmartDashboard.putNumber("P", 0.0);
+        SmartDashboard.putNumber("I", 0.0);
+        SmartDashboard.putNumber("D", 0.0);
+        SmartDashboard.putNumber("Velocity", 0);
+        SmartDashboard.putNumber("Acceleration", 0);
         
         // Setup the USB camera server
         UsbCamera camera = CameraServer.getInstance().startAutomaticCapture();
@@ -212,11 +210,6 @@ public class Robot extends TimedRobot
         showInformationOnDashboard();
     }
     
-    public static String getChangePIDChooser()
-    {
-        return changePIDChooser.getSelected();
-    }
-    
     /*********************************************************************
      * Show robot information on the SmartDashboard
      *********************************************************************/
@@ -236,11 +229,11 @@ public class Robot extends TimedRobot
          SmartDashboard.putNumber("Elevator Setpoint", Robot.elevator.getPID_Setpoint());
          SmartDashboard.putNumber("Elevator Position", Robot.elevator.getPosition());
         
-//         SmartDashboard.putNumber("Intake Angle Error", Robot.intake.getPID_ErrorAngle());
-//         SmartDashboard.putNumber("Intake Angle MotorPercent", Robot.intake.getMotorPercentAngle());
-//         SmartDashboard.putNumber("Intake Angle Setpoint", Robot.intake.getPID_SetpointAngle());
+         SmartDashboard.putNumber("Intake Angle Error", Robot.intake.getPID_ErrorAngle());
+         SmartDashboard.putNumber("Intake Angle MotorPercent", Robot.intake.getMotorPercentAngle());
+         SmartDashboard.putNumber("Intake Angle Setpoint", Robot.intake.getPID_SetpointAngle());
          SmartDashboard.putNumber("Intake Angle Position", Robot.intake.getPositionAngle());
-//         SmartDashboard.putNumber("Intake Angle Velocity", Robot.intake.getVelocityAngle());
+         SmartDashboard.putNumber("Intake Angle Velocity", Robot.intake.getVelocityAngle());
         
 //         SmartDashboard.putNumber("Intake Right Error", Robot.intake.getPID_ErrorRight());
 //         SmartDashboard.putNumber("Intake Right MotorPercent", Robot.intake.getMotorPercentRight());
