@@ -49,10 +49,15 @@ public class Intake extends Subsystem
     private int intakeAngleCruiseVelocity = Constants.IntakeAngleCruiseVelocity;
     private int intakeAngleAcceleration = Constants.IntakeAngleAcceleration;
     
+    private double intakeAngleSetpoint  = 0;
+    
     private double intakeWheelPIDParamF = Constants.IntakeWheelPIDParamF;
     private double intakeWheelPIDParamP = Constants.IntakeWheelPIDParamP;
     private double intakeWheelPIDParamI = Constants.IntakeWheelPIDParamI;
     private double intakeWheelPIDParamD = Constants.IntakeWheelPIDParamD;
+    
+    private double intakeWheelLeftSetpoint  = 0;
+    private double intakeWheelRightSetpoint  = 0;
 
     /*********************************************************************
      *
@@ -160,7 +165,7 @@ public class Intake extends Subsystem
      *********************************************************************/
     public double getPID_SetpointRight()
     {
-        return right.getClosedLoopTarget(0);
+        return intakeWheelRightSetpoint;
     }
 
     /*********************************************************************
@@ -224,7 +229,7 @@ public class Intake extends Subsystem
      *********************************************************************/
     public double getPID_SetpointLeft()
     {
-        return left.getClosedLoopTarget(0);
+        return intakeWheelLeftSetpoint;
     }
 
     /*********************************************************************
@@ -288,7 +293,7 @@ public class Intake extends Subsystem
      *********************************************************************/
     public double getPID_SetpointAngle()
     {
-        return angle.getClosedLoopTarget(0);
+        return intakeAngleSetpoint;
     }
 
     /*********************************************************************
@@ -380,6 +385,9 @@ public class Intake extends Subsystem
         // Set the wheel PID velocity setpoint
         left.set(ControlMode.Velocity, targetVelocity);
         right.set(ControlMode.Velocity, targetVelocity);
+        
+        intakeWheelLeftSetpoint = targetVelocity;
+        intakeWheelRightSetpoint = targetVelocity;
 
         SmartDashboard.putNumber("Intake Target Velocity", targetVelocity);
         SmartDashboard.putNumber("Intake RPM",RPM);
@@ -404,6 +412,8 @@ public class Intake extends Subsystem
 
         // Set the wheel PID velocity setpoint
         right.set(ControlMode.Velocity, targetVelocity);
+        
+        intakeWheelRightSetpoint = targetVelocity;
     }
     
     /*********************************************************************
@@ -425,6 +435,8 @@ public class Intake extends Subsystem
 
         // Set the wheel PID velocity setpoint
         left.set(ControlMode.Velocity, targetVelocity);
+        
+        intakeWheelLeftSetpoint = targetVelocity;
     }
     
     /*********************************************************************
@@ -458,7 +470,16 @@ public class Intake extends Subsystem
         double calculatedAngle = (positionAngle * (Constants.IntakeAngleEncoderYIntercept / 90)) + Constants.IntakeAngleEncoderYIntercept;  
         angle.set(ControlMode.MotionMagic, calculatedAngle);
         
+        intakeAngleSetpoint = calculatedAngle;
+        
         SmartDashboard.putNumber("Calculated Angle", calculatedAngle);
+    }
+    
+    public void setAnglePosition(double position)
+    {
+        angle.set(ControlMode.MotionMagic, position);
+        
+        intakeAngleSetpoint = position;
     }
     
     public void setIntakeRotatePID()

@@ -51,7 +51,7 @@ public class IntakeInOut extends Command
     protected void initialize()
     {
         // Set the intake RPM and direction
-        Robot.intake.setRPM(m_directionIn, m_RPM);
+        Robot.intake.setWheelVoltage(m_directionIn, m_RPM);
     }
 
     /*********************************************************************
@@ -69,6 +69,11 @@ public class IntakeInOut extends Command
     @Override
     protected boolean isFinished()
     {
+        if (Robot.oi.buttonPanel.getRawButton(14) || Robot.oi.buttonPanel.getRawButton(10))
+        {
+            return false;
+        }
+        
         return true;
     }
 
@@ -78,7 +83,7 @@ public class IntakeInOut extends Command
     @Override
     protected void end()
     {
-        
+        Robot.intake.stopIntake();
     }
 
     /*********************************************************************

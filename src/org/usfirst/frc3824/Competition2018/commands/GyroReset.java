@@ -46,7 +46,7 @@ public class GyroReset extends Command
     protected void initialize()
     {
         // Reset the chassis gyro
-        Robot.chassis.resetGyro();
+        Robot.chassis.resetNavXGyro();;
     }
 
     /*********************************************************************

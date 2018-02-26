@@ -48,9 +48,11 @@ public final class Constants
     public static int     ElevatorCruiseVelocity;
     public static int     ElevatorAcceleration;
 
-    public static double  ElevatorScalePosition;
+    public static double  ElevatorScalePositionTheirs;
+    public static double  ElevatorScalePositionNeutral;
+    public static double  ElevatorScalePositionOurs;
     public static double  ElevatorSwitchPosition;
-    public static double  ElevatorStartPosition;
+    public static double  ElevatorDownPosition;
     public static double  ElevatorChutePosition;
     public static double  ElevatorCubeInPosition;
 
@@ -102,9 +104,11 @@ public final class Constants
             ElevatorCruiseVelocity       = 2000;
             ElevatorAcceleration         = 2000;
 
-            ElevatorScalePosition        = -51000;
+            ElevatorScalePositionTheirs  = -51000;
+            ElevatorScalePositionNeutral = -48000;
+            ElevatorScalePositionOurs    = -45000;
             ElevatorSwitchPosition       = -10000;
-            ElevatorStartPosition        = 0;
+            ElevatorDownPosition        = 0;
             ElevatorChutePosition        = 24300;
             ElevatorCubeInPosition       = 24300;
 
@@ -131,17 +135,17 @@ public final class Constants
 
             IntakeAngleHomePosition      = -80;
 
-            IntakeAnglePIDMaximum        = 0.75;
-            IntakeAnglePIDMinimum        = -0.75;
+            IntakeAnglePIDMaximum        = 1.0;
+            IntakeAnglePIDMinimum        = -1.0;
             
-            IntakeAngleEncoderYIntercept = 8000;
+            IntakeAngleEncoderYIntercept = 8750;
             IntakeAnglePIDParamF         = 0.0;
-            IntakeAnglePIDParamP         = 0.01;
-            IntakeAnglePIDParamI         = 0.00001;
+            IntakeAnglePIDParamP         = 0.4;
+            IntakeAnglePIDParamI         = 0.0;
             IntakeAnglePIDParamD         = 0.0;
 
-            IntakeAngleCruiseVelocity    = 18800 * 4;
-            IntakeAngleAcceleration      = 37600 * 4;
+            IntakeAngleCruiseVelocity    = 800;
+            IntakeAngleAcceleration      = 3200;
             
             // ***************************************************************************************
             // Elevator Constants
@@ -151,24 +155,26 @@ public final class Constants
 
             ElevatorRPM                  = 200;
 
-            ElevatorCruiseVelocity       = 2000;
-            ElevatorAcceleration         = 2000;
+            ElevatorCruiseVelocity       = 6000;
+            ElevatorAcceleration         = 6000;
 
-            ElevatorScalePosition        = -63000;
-            ElevatorSwitchPosition       = -10000;
-            ElevatorStartPosition        = 0;
+            ElevatorScalePositionTheirs  = -62000;
+            ElevatorScalePositionNeutral = -60000;
+            ElevatorScalePositionOurs    = -50000;
+            ElevatorSwitchPosition       = -2500;
+            ElevatorDownPosition         = 23500;
             ElevatorChutePosition        = 0;
             ElevatorCubeInPosition       = 0;
             
             ElevatorPIDParamF            = 0.4;
-            ElevatorPIDParamP            = 0.04;
-            ElevatorPIDParamI            = 0.0002;
+            ElevatorPIDParamP            = 0.4;
+            ElevatorPIDParamI            = 0.0;
             ElevatorPIDParamD            = 0.0;
 
             ElevatorPIDMaximum           = 1.0;
             ElevatorPIDMinimum           = -1.0;
 
-            ElevatorStep                 = 1000;
+            ElevatorStep                 = 2000;
         }
     }
 

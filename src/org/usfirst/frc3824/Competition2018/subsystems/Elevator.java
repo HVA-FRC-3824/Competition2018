@@ -47,6 +47,8 @@ public class Elevator extends Subsystem
     private int elevatorCruiseVelocity = Constants.ElevatorCruiseVelocity;
     private int elevatorAcceleration = Constants.ElevatorAcceleration;
     
+    private double elevatorSetpoint  = 0;
+    
     /*********************************************************************
      *
      *********************************************************************/
@@ -114,6 +116,8 @@ public class Elevator extends Subsystem
     {
         // Set the elevator velocity PID setpoint
         liftMaster.set(ControlMode.MotionMagic, position);
+        
+        elevatorSetpoint = position;
     }
 
     /*********************************************************************
@@ -153,7 +157,7 @@ public class Elevator extends Subsystem
      *********************************************************************/
     public double getPID_Setpoint()
     {
-        return liftMaster.getClosedLoopTarget(0);
+        return elevatorSetpoint;
     }
 
     /*********************************************************************

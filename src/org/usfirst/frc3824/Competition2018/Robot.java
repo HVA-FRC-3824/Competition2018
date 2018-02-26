@@ -141,6 +141,8 @@ public class Robot extends TimedRobot
         // Show robot information on the SmartDashboard
         showInformationOnDashboard();
         
+        checkButton();
+        
         // Shows PID change selector
     }
 
@@ -208,6 +210,8 @@ public class Robot extends TimedRobot
 
         // Show robot information on the SmartDashboard
         showInformationOnDashboard();
+        
+        checkButton();
     }
     
     /*********************************************************************
@@ -215,25 +219,22 @@ public class Robot extends TimedRobot
      *********************************************************************/
     public void showInformationOnDashboard()
     {
-         SmartDashboard.putNumber("rightEncoder", chassis.getRightEncoder());
-         SmartDashboard.putNumber("leftEncoder", chassis.getLeftEncoder());
-         SmartDashboard.putNumber("rightDistance", chassis.getRightDistance());
-         SmartDashboard.putNumber("leftDistance", chassis.getLeftDistance());
-//        
-//         SmartDashboard.putNumber("gyro", chassis.getCurrentHeading());
-//         SmartDashboard.putNumber("gyroTurnError", chassis.getAngleTurnError());
+//         SmartDashboard.putNumber("rightEncoder", chassis.getRightEncoder());
+//         SmartDashboard.putNumber("leftEncoder", chassis.getLeftEncoder());
+//         SmartDashboard.putNumber("rightDistance", chassis.getRightDistance());
+//         SmartDashboard.putNumber("leftDistance", chassis.getLeftDistance());
         
          SmartDashboard.putNumber("Elevator Error", Robot.elevator.getPID_Error());
-//         SmartDashboard.putNumber("Elevator MotorPercent", Robot.elevator.getMotorPercent());
-//         SmartDashboard.putNumber("Elevator Velocity", Robot.elevator.getVelocity());
+         SmartDashboard.putNumber("Elevator MotorPercent", Robot.elevator.getMotorPercent());
+         SmartDashboard.putNumber("Elevator Velocity", Robot.elevator.getVelocity());
          SmartDashboard.putNumber("Elevator Setpoint", Robot.elevator.getPID_Setpoint());
          SmartDashboard.putNumber("Elevator Position", Robot.elevator.getPosition());
         
-         SmartDashboard.putNumber("Intake Angle Error", Robot.intake.getPID_ErrorAngle());
-         SmartDashboard.putNumber("Intake Angle MotorPercent", Robot.intake.getMotorPercentAngle());
-         SmartDashboard.putNumber("Intake Angle Setpoint", Robot.intake.getPID_SetpointAngle());
-         SmartDashboard.putNumber("Intake Angle Position", Robot.intake.getPositionAngle());
-         SmartDashboard.putNumber("Intake Angle Velocity", Robot.intake.getVelocityAngle());
+//         SmartDashboard.putNumber("Intake Angle Error", Robot.intake.getPID_ErrorAngle());
+//         SmartDashboard.putNumber("Intake Angle MotorPercent", Robot.intake.getMotorPercentAngle());
+//         SmartDashboard.putNumber("Intake Angle Setpoint", Robot.intake.getPID_SetpointAngle());
+//         SmartDashboard.putNumber("Intake Angle Position", Robot.intake.getPositionAngle());
+//         SmartDashboard.putNumber("Intake Angle Velocity", Robot.intake.getVelocityAngle());
         
 //         SmartDashboard.putNumber("Intake Right Error", Robot.intake.getPID_ErrorRight());
 //         SmartDashboard.putNumber("Intake Right MotorPercent", Robot.intake.getMotorPercentRight());
@@ -248,5 +249,19 @@ public class Robot extends TimedRobot
          SmartDashboard.putNumber("UltraSonic Distance Inches", Robot.chassis.getUltrasonicDistance());
          SmartDashboard.putNumber("navx Gyro Angle: ", chassis.getNavxAngle());
 //         SmartDashboard.putNumber("navx Gyro Error", chassis.angleGyroPID.getError());
+    }
+    
+    public void checkButton()
+    {   
+        for(int i = 1; i <= 20; i++)
+        {   
+            if(Robot.oi.buttonPanel.getRawButtonPressed(i) == true)
+            {
+                SmartDashboard.putNumber("Button Selected", i);
+                break;
+            }
+        }
+        
+        
     }
 }

@@ -56,21 +56,7 @@ public class IntakeTeleop extends Command
     @Override
     protected void execute()
     {
-//        // Determine the intake angle from the joystick
-//        double intakeAngle = -Robot.oi.opJoystick.getZ();
-//        
-//        // Set the intake based on the joystick setting
-//        Robot.intake.setAngle(90 * intakeAngle);
-//        
-//        SmartDashboard.putNumber("Angle Value", (90 * intakeAngle));
-        
-        // Determine the intake wheel speed based on the joystick
-        double intakeSpeed = -Robot.oi.opJoystick.getY();
-//        Robot.intake.setRPM(true, intakeSpeed * Constants.IntakeMaximumRPM);
-        Robot.intake.setRPMRight(true, (intakeSpeed * Constants.IntakeMaximumRPM) / 2);
-        Robot.intake.setRPMLeft(true, intakeSpeed * Constants.IntakeMaximumRPM);
-        
-//        SmartDashboard.putNumber("Intake Wheel Speed", intakeSpeed * Constants.IntakeMaximumRPM);
+        Robot.intake.setWheelVoltage(true, 0.2);
     }
 
     /*********************************************************************

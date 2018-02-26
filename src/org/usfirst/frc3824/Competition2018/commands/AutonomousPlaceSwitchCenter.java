@@ -96,7 +96,7 @@ public class AutonomousPlaceSwitchCenter extends CommandGroup
         addSequential(new IntakeRotate(Constants.IntakeAngleHomePosition));
 
         // Set elevator to home position
-        addSequential(new ElevatorUpDownPosition(Constants.ElevatorStartPosition));
+        addSequential(new ElevatorUpDownPosition(Constants.ElevatorDownPosition));
 
         // Stop intake wheels
         addSequential(new IntakeInOut(true, 0));
