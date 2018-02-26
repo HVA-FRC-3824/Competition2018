@@ -386,11 +386,11 @@ public class Intake extends Subsystem
         left.set(ControlMode.Velocity, targetVelocity);
         right.set(ControlMode.Velocity, targetVelocity);
         
-        intakeWheelLeftSetpoint = targetVelocity;
+        intakeWheelLeftSetpoint  = targetVelocity;
         intakeWheelRightSetpoint = targetVelocity;
 
-        SmartDashboard.putNumber("Intake Target Velocity", targetVelocity);
-        SmartDashboard.putNumber("Intake RPM",RPM);
+//        SmartDashboard.putNumber("Intake Target Velocity", targetVelocity);
+//        SmartDashboard.putNumber("Intake RPM",RPM);
     }
     
     /*********************************************************************
@@ -454,8 +454,8 @@ public class Intake extends Subsystem
     }
 
     /*********************************************************************
-    * Uses PIDs with Talon SRX encoder feedback to set the position of the intake to a specified angle
-    *********************************************************************/
+     * Uses PIDs with Talon SRX encoder feedback to set the position of the intake to a specified angle
+     *********************************************************************/
     public void setAngle(double positionAngle)
     {
         if (positionAngle < Constants.IntakeMinimumAngle)
@@ -472,9 +472,12 @@ public class Intake extends Subsystem
         
         intakeAngleSetpoint = calculatedAngle;
         
-        SmartDashboard.putNumber("Calculated Angle", calculatedAngle);
+//        SmartDashboard.putNumber("Calculated Angle", calculatedAngle);
     }
     
+    /*********************************************************************
+     *
+     *********************************************************************/
     public void setAnglePosition(double position)
     {
         angle.set(ControlMode.MotionMagic, position);
@@ -482,14 +485,17 @@ public class Intake extends Subsystem
         intakeAngleSetpoint = position;
     }
     
+    /*********************************************************************
+     *
+     *********************************************************************/
     public void setIntakeRotatePID()
     {
-        intakeAnglePIDParamF = SmartDashboard.getNumber("F", Constants.IntakeAnglePIDParamF);
-        intakeAnglePIDParamP = SmartDashboard.getNumber("P", Constants.IntakeAnglePIDParamP);
-        intakeAnglePIDParamI = SmartDashboard.getNumber("I", Constants.IntakeAnglePIDParamI);
-        intakeAnglePIDParamD = SmartDashboard.getNumber("D", Constants.IntakeAnglePIDParamD);
+        intakeAnglePIDParamF      = SmartDashboard.getNumber("F", Constants.IntakeAnglePIDParamF);
+        intakeAnglePIDParamP      = SmartDashboard.getNumber("P", Constants.IntakeAnglePIDParamP);
+        intakeAnglePIDParamI      = SmartDashboard.getNumber("I", Constants.IntakeAnglePIDParamI);
+        intakeAnglePIDParamD      = SmartDashboard.getNumber("D", Constants.IntakeAnglePIDParamD);
         intakeAngleCruiseVelocity = (int)SmartDashboard.getNumber("Velocity", Constants.IntakeAngleCruiseVelocity);
-        intakeAngleAcceleration = (int)SmartDashboard.getNumber("Acceleration", Constants.IntakeAngleAcceleration);
+        intakeAngleAcceleration   = (int)SmartDashboard.getNumber("Acceleration", Constants.IntakeAngleAcceleration);
         
         angle.config_kF(0, intakeAnglePIDParamF, Constants.TalonInitialCommunicationTimeout);
         angle.config_kP(0, intakeAnglePIDParamP, Constants.TalonInitialCommunicationTimeout);
@@ -500,6 +506,9 @@ public class Intake extends Subsystem
         angle.configMotionAcceleration(intakeAngleAcceleration, Constants.TalonInitialCommunicationTimeout);
     }
     
+    /*********************************************************************
+     *
+     *********************************************************************/
     public void setIntakeWheelPID()
     {
         intakeWheelPIDParamF = SmartDashboard.getNumber("F", Constants.IntakeWheelPIDParamF);

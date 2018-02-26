@@ -217,12 +217,12 @@ public class Elevator extends Subsystem
     
     public void setElevatorPID()
     {
-        elevatorPIDParamF = SmartDashboard.getNumber("F", Constants.ElevatorPIDParamF);
-        elevatorPIDParamP = SmartDashboard.getNumber("P", Constants.ElevatorPIDParamP);
-        elevatorPIDParamI = SmartDashboard.getNumber("I", Constants.ElevatorPIDParamI);
-        elevatorPIDParamD = SmartDashboard.getNumber("D", Constants.ElevatorPIDParamD);
+        elevatorPIDParamF      = SmartDashboard.getNumber("F", Constants.ElevatorPIDParamF);
+        elevatorPIDParamP      = SmartDashboard.getNumber("P", Constants.ElevatorPIDParamP);
+        elevatorPIDParamI      = SmartDashboard.getNumber("I", Constants.ElevatorPIDParamI);
+        elevatorPIDParamD      = SmartDashboard.getNumber("D", Constants.ElevatorPIDParamD);
         elevatorCruiseVelocity = (int)(SmartDashboard.getNumber("Velocity", Constants.ElevatorCruiseVelocity));
-        elevatorAcceleration = (int)(SmartDashboard.getNumber("Acceleration", Constants.ElevatorAcceleration));
+        elevatorAcceleration   = (int)(SmartDashboard.getNumber("Acceleration", Constants.ElevatorAcceleration));
         
         liftMaster.config_kF(0, elevatorPIDParamF, Constants.TalonInitialCommunicationTimeout);
         liftMaster.config_kP(0, elevatorPIDParamP, Constants.TalonInitialCommunicationTimeout);
