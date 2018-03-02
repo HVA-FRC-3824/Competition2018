@@ -458,13 +458,13 @@ public class Intake extends Subsystem
      *********************************************************************/
     public void setAngle(double positionAngle)
     {
-        if (positionAngle < Constants.IntakeMinimumAngle)
+        if (positionAngle < Constants.IntakeAngleMinimumAngle)
         {
-            positionAngle = Constants.IntakeMinimumAngle;
+            positionAngle = Constants.IntakeAngleMinimumAngle;
         } 
-        else if (positionAngle > Constants.IntakeMaximumAngle)
+        else if (positionAngle > Constants.IntakeAngleMaximumAngle)
         {
-            positionAngle = Constants.IntakeMaximumAngle;
+            positionAngle = Constants.IntakeAngleMaximumAngle;
         }
 
         double calculatedAngle = (positionAngle * (Constants.IntakeAngleEncoderYIntercept / 90)) + Constants.IntakeAngleEncoderYIntercept;  

@@ -2,219 +2,35 @@ package org.usfirst.frc3824.Competition2018;
 
 public final class Constants
 {
-    static final boolean competitionRobot                     = false;
-
     // ***************************************************************************************
     // TalonSRX set timeout (ms)
     // ***************************************************************************************
 
-    public static int     TalonInitialCommunicationTimeout    = 10;
+    public static int     TalonInitialCommunicationTimeout            = 10;
 
     // ***************************************************************************************
     // Intake angle constants
-    // John stop taking out my comments
-    // You're just mad you're bald
-    // I can't control that
-    // Bryson, Jovi, and Seth rock
     // ***************************************************************************************
 
-    public static double  IntakeMinimumAngle;
-    public static double  IntakeMaximumAngle;
-    public static double  IntakePlaceAngle;
-    public static double  IntakeShootAngle;
+    public static double  IntakeAngleMinimumAngle                     = -90;
+    public static double  IntakeAngleHomeAngle                        = -80;
+    public static double  IntakeAnglePickupAngle                      = -10;
+    public static double  IntakeAnglePlaceAngle                       =   0;
+    public static double  IntakeAngleShootAngle                       =  20;
+    public static double  IntakeAngleMaximumAngle                     =  30;
 
-    public static double  IntakeAngleHomePosition;
-
-    public static double  IntakeAnglePIDMaximum;
-    public static double  IntakeAnglePIDMinimum;
+    public static double  IntakeAngleEncoderYIntercept                = -9000;
     
-    public static double IntakeAngleEncoderYIntercept;
-    public static double IntakeAnglePIDParamF;
-    public static double IntakeAnglePIDParamP;
-    public static double IntakeAnglePIDParamI;
-    public static double IntakeAnglePIDParamD;
-
-    public static int    IntakeAngleCruiseVelocity;
-    public static int    IntakeAngleAcceleration;
-
-    // ***************************************************************************************
-    // Elevator Constants
-    // ***************************************************************************************
-
-    public static boolean ElevatorUsePosition;
-
-    public static double  ElevatorRPM;
-
-    public static int     ElevatorCruiseVelocity;
-    public static int     ElevatorAcceleration;
-
-    public static double  ElevatorScalePositionTheirs;
-    public static double  ElevatorScalePositionNeutral;
-    public static double  ElevatorScalePositionOurs;
-    public static double  ElevatorSwitchPosition;
-    public static double  ElevatorDownPosition;
-    public static double  ElevatorChutePosition;
-    public static double  ElevatorCubeInPosition;
-
-    public static double  ElevatorPIDParamF;
-    public static double  ElevatorPIDParamP;
-    public static double  ElevatorPIDParamI;
-    public static double  ElevatorPIDParamD;
-
-    public static double  ElevatorPIDMaximum;
-    public static double  ElevatorPIDMinimum;
-
-    public static double  ElevatorStep;
+    public static int     IntakeAngleCruiseVelocity                   = 1000;
+    public static int     IntakeAngleAcceleration                     = 2000;
     
-    public static void InitConstants()
-    {
-        if (competitionRobot)
-        {
-            // ***************************************************************************************
-            // Intake angle constants
-            // ***************************************************************************************
+    public static double  IntakeAnglePIDMaximum                       =  1.0;
+    public static double  IntakeAnglePIDMinimum                       = -1.0;
 
-            IntakeMinimumAngle           = -90;
-            IntakeMaximumAngle           = 30;
-            IntakePlaceAngle             = 0;
-            IntakeShootAngle             = 20;
-
-            IntakeAngleHomePosition      = -80;
-
-            IntakeAnglePIDMaximum        = 0.75;
-            IntakeAnglePIDMinimum        = -0.75;
-            
-            IntakeAngleEncoderYIntercept = -2100;
-            IntakeAnglePIDParamF         = 0.0;
-            IntakeAnglePIDParamP         = 1.167;     // 0.01    * 1.167;
-            IntakeAnglePIDParamI         = 0.001167;  // 0.00001 * 116.7;
-            IntakeAnglePIDParamD         = 0.0;
-
-            IntakeAngleCruiseVelocity    = 161;       // (int) (18800.0       / 116.7);
-            IntakeAngleAcceleration      = 322;       // (int) (18800.0 * 2.0 / 116.7);
-            
-            // ***************************************************************************************
-            // Elevator Constants
-            // ***************************************************************************************
-
-            ElevatorUsePosition          = true;
-
-            ElevatorRPM                  = 200;
-
-            ElevatorCruiseVelocity       = 2000;
-            ElevatorAcceleration         = 2000;
-
-            ElevatorScalePositionTheirs  = -51000;
-            ElevatorScalePositionNeutral = -48000;
-            ElevatorScalePositionOurs    = -45000;
-            ElevatorSwitchPosition       = -10000;
-            ElevatorDownPosition        = 0;
-            ElevatorChutePosition        = 24300;
-            ElevatorCubeInPosition       = 24300;
-
-            ElevatorPIDParamF            = 0.4;
-            ElevatorPIDParamP            = 0.04;
-            ElevatorPIDParamI            = 0.00007; // 0.0002;
-            ElevatorPIDParamD            = 0.0;
-
-            ElevatorPIDMaximum           = 1.0;
-            ElevatorPIDMinimum           = -1.0;
-
-            ElevatorStep                 = 2000;
-        }
-        else
-        {
-            // ***************************************************************************************
-            // Intake angle constants
-            // ***************************************************************************************
-
-            IntakeMinimumAngle           = -90;
-            IntakeMaximumAngle           = 30;
-            IntakePlaceAngle             = 0;
-            IntakeShootAngle             = 20;
-
-            IntakeAngleHomePosition      = -80;
-
-            IntakeAnglePIDMaximum        = 1.0;
-            IntakeAnglePIDMinimum        = -1.0;
-            
-            IntakeAngleEncoderYIntercept = 8750;
-            IntakeAnglePIDParamF         = 0.0;
-            IntakeAnglePIDParamP         = 0.4;
-            IntakeAnglePIDParamI         = 0.0;
-            IntakeAnglePIDParamD         = 0.0;
-
-            IntakeAngleCruiseVelocity    = 800;
-            IntakeAngleAcceleration      = 3200;
-            
-            // ***************************************************************************************
-            // Elevator Constants
-            // ***************************************************************************************
-
-            ElevatorUsePosition          = true;
-
-            ElevatorRPM                  = 200;
-
-            ElevatorCruiseVelocity       = 6000;
-            ElevatorAcceleration         = 6000;
-
-            ElevatorScalePositionTheirs  = -62000;
-            ElevatorScalePositionNeutral = -60000;
-            ElevatorScalePositionOurs    = -50000;
-            ElevatorSwitchPosition       = -2500;
-            ElevatorDownPosition         = 23500;
-            ElevatorChutePosition        = 0;
-            ElevatorCubeInPosition       = 0;
-            
-            ElevatorPIDParamF            = 0.4;
-            ElevatorPIDParamP            = 0.4;
-            ElevatorPIDParamI            = 0.0;
-            ElevatorPIDParamD            = 0.0;
-
-            ElevatorPIDMaximum           = 1.0;
-            ElevatorPIDMinimum           = -1.0;
-
-            ElevatorStep                 = 2000;
-        }
-    }
-
-    // ***************************************************************************************
-    // Chassis turn constants
-    // ***************************************************************************************
-
-    public static double  ChassisTurnThreshold                        = 5.0;
-    public static double  ChassisTurnTimeOutTimeDefault               = 3.0;
-    public static double  ChassisTurnTimeOutTime                      = 1.0;
-
-    public static double  TurnAngle_F                                 = 0.0;
-    public static double  TurnAngle_P                                 = 0.06;   // 0.4  // 0.01
-    public static double  TurnAngle_I                                 = 0.000;  // 0.0  // 0.002
-    public static double  TurnAngle_D                                 = 0.15;   // 0.1  // 0.002
-
-    public static double  TurnAngle_MinimumOutput                     = -0.4;
-    public static double  TurnAngle_MaximumOutput                     = 0.4;
-
-    // ***************************************************************************************
-    // Chassis drive straight constants
-    // ***************************************************************************************
-
-    public static double  DrivetrainDriveStraight_F                   = 0.0;
-    public static double  DrivetrainDriveStraight_P                   = 0.05;
-    public static double  DrivetrainDriveStraight_I                   = 0.00005;
-    public static double  DrivetrainDriveStraight_D                   = 0.0;
-
-    public static double  DrivetrainDriveMinimumOutput                = -1.0;
-    public static double  DrivetrainDriveMaximumOutput                = 1.0;
-
-    // ***************************************************************************************
-    // Ultrasonic constants
-    // ***************************************************************************************
-
-    public static double  Ultrasonic_A                                = 108.23;
-    public static double  Ultrasonic_B                                = -1.364;
-
-    public static double  UltrasonicDriveDistanceRange                = 18.0;
-    public static double  UltrasonicDriveDistancePower                = 0.2;
+    public static double  IntakeAnglePIDParamF                        =  2.0;
+    public static double  IntakeAnglePIDParamP                        =  3.0;
+    public static double  IntakeAnglePIDParamI                        =  0.0;
+    public static double  IntakeAnglePIDParamD                        =  0.0;
 
     // ***************************************************************************************
     // Intake wheel constants
@@ -231,13 +47,80 @@ public final class Constants
 
     public static double  IntakeWheelShootTime                        = 1.0;
 
+    public static double  IntakeWheelPIDMaximum                       =  0.75;
+    public static double  IntakeWheelPIDMinimum                       = -0.75;
+
     public static double  IntakeWheelPIDParamF                        = 0.1;
     public static double  IntakeWheelPIDParamP                        = 0.2;
     public static double  IntakeWheelPIDParamI                        = 0.001;
     public static double  IntakeWheelPIDParamD                        = 0.0;
 
-    public static double  IntakeWheelPIDMaximum                       = 1.0;
-    public static double  IntakeWheelPIDMinimum                       = -1.0;
+    // ***************************************************************************************
+    // Elevator Constants
+    // ***************************************************************************************
+
+    public static boolean ElevatorUsePosition                         = true;
+
+    public static double  ElevatorRPM                                 = 200;
+
+    public static double  ElevatorScalePositionTheirs                 = 66000;
+    public static double  ElevatorScalePositionNeutral                = 66000;
+    public static double  ElevatorScalePositionOurs                   = 64000;
+    public static double  ElevatorSwitchPosition                      = 11000;
+    public static double  ElevatorDownPosition                        =     0;
+    public static double  ElevatorChutePosition                       = -20000;
+    public static double  ElevatorCubeInPosition                      = -20000;
+
+    public static double  ElevatorStep                                = 2000;
+
+    public static int     ElevatorCruiseVelocity                      = 2000;
+    public static int     ElevatorAcceleration                        = 2000;
+    
+    public static double  ElevatorPIDMaximum                          =  1.0;
+    public static double  ElevatorPIDMinimum                          = -1.0;
+
+    public static double  ElevatorPIDParamF                           = 0.4;
+    public static double  ElevatorPIDParamP                           = 0.04;
+    public static double  ElevatorPIDParamI                           = 0.00007;
+    public static double  ElevatorPIDParamD                           = 0.0;
+
+    // ***************************************************************************************
+    // Chassis turn constants
+    // ***************************************************************************************
+
+    public static double  ChassisTurnThreshold                        = 5.0;
+    public static double  ChassisTurnTimeOutTimeDefault               = 3.0;
+    public static double  ChassisTurnTimeOutTime                      = 1.0;
+
+    public static double  TurnAngle_MinimumOutput                     = -0.4;
+    public static double  TurnAngle_MaximumOutput                     =  0.4;
+
+    public static double  TurnAngle_F                                 = 0.0;
+    public static double  TurnAngle_P                                 = 0.06;
+    public static double  TurnAngle_I                                 = 0.0;
+    public static double  TurnAngle_D                                 = 0.15;
+
+    // ***************************************************************************************
+    // Chassis drive straight constants
+    // ***************************************************************************************
+
+    public static double  DrivetrainDriveMinimumOutput                = -1.0;
+    public static double  DrivetrainDriveMaximumOutput                =  1.0;
+
+    public static double  DrivetrainDriveStraight_F                   = 0.0;
+    public static double  DrivetrainDriveStraight_P                   = 0.05;
+    public static double  DrivetrainDriveStraight_I                   = 0.00005;
+    public static double  DrivetrainDriveStraight_D                   = 0.0;
+
+    // ***************************************************************************************
+    // Ultrasonic constants
+    // ***************************************************************************************
+
+    public static double  Ultrasonic_A                                = 108.23;
+    public static double  Ultrasonic_B                                = -1.364;
+
+    public static double  UltrasonicDriveDistanceRange                = 18.0;
+    public static double  UltrasonicDriveDistancePower                = 0.2;
 
     // ***************************************************************************************
     // Autonomous constants: cross autoline
@@ -264,8 +147,8 @@ public final class Constants
     public static double  AutoCenterSwitchToSwitchPower               = 0.6;
 
     public static double  AutoCenterSwitchBackUpDistance              = 2.0;     // Feet
-    public static double  AutoCenterSwitchBackUpPower                 = -0.6;    // Backing
-                                                                                 // up
+    public static double  AutoCenterSwitchBackUpPower                 = -0.6;    // Backing up
+    
     // ***************************************************************************************
     // Autonomous constants: switch or scale
     // ***************************************************************************************
@@ -276,7 +159,7 @@ public final class Constants
     public static double  AutoSwitchOrScaleDriveScaleDistance         = 24.0;    // Feet
     public static double  AutoSwitchOrScaleDriveScalePower            = 0.8;
 
-    public static double  AutoSwitchOrScaleDriveOppositeScaleDistance = 18.0;    // Feet
+    public static double  AutoSwitchOrScaleDriveOppositeScaleDistance = 17.5;   //18.0    // Feet
     public static double  AutoSwitchOrScaleDriveOppositeScalePower    = 0.8;
 
     public static double  AutoSwitchOrScaleDriveAcrossFieldDistance   = 17.0;    // Feet
@@ -309,23 +192,25 @@ public final class Constants
 
     public static double  AutoSwitchOrScaleToScaleWithCubeDistance    = 8.0;
     public static double  AutoSwitchOrScaleToScaleWithCubePower       = 0.6;
-    
+
     // ***************************************************************************************
     // Intake: rotate and center the cube
     // ***************************************************************************************
-    
-    public static double  IntakeWheelRotateTime1                     = 0.5;  // Rotate the left wheel out
-    public static double  IntakeWheelRotateRightRPM1                 = 200;
-    public static double  IntakeWheelRotateLeftRPM1                  = 200;
-    
-    public static double  IntakeWheelRotateTime2                     = 1.5;  // Rotate the right wheel in
-    public static double  IntakeWheelRotateRightRPM2                 = 400;
-    public static double  IntakeWheelRotateLeftRPM2                  = 200;
-    
-    public static double  IntakeWheelRotateTime3                     = 2.0;  // Rotate both wheels in
-    public static double  IntakeWheelRotateRightRPM3                 = 0;
-    public static double  IntakeWheelRotateLeftRPM3                  = 0;
-    
-    
-    public static double  IntakeWheelRotateTimeStop                  = 2.5;  // Rotate both wheels in
+
+    public static double  IntakeWheelRotateTime1                      = 0.5;     // Rotate the left wheel out
+
+    public static double  IntakeWheelRotateRightRPM1                  = 200;
+    public static double  IntakeWheelRotateLeftRPM1                   = 200;
+
+    public static double  IntakeWheelRotateTime2                      = 1.5;     // Rotate the right wheel in
+
+    public static double  IntakeWheelRotateRightRPM2                  = 400;
+    public static double  IntakeWheelRotateLeftRPM2                   = 200;
+
+    public static double  IntakeWheelRotateTime3                      = 2.0;     // Rotate both wheels in
+
+    public static double  IntakeWheelRotateRightRPM3                  = 0;
+    public static double  IntakeWheelRotateLeftRPM3                   = 0;
+
+    public static double  IntakeWheelRotateTimeStop                   = 2.5;     // Rotate both wheels in
 }

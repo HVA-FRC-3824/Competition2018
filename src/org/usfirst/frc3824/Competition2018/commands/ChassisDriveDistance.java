@@ -75,9 +75,9 @@ public class ChassisDriveDistance extends Command
         if (Math.abs(m_distance - Math.abs(Robot.chassis.getEncoderDistance())) < 2.0)
         {
             if (m_power < 0.0)
-                Robot.chassis.updateMagnitude(-0.2);
+                Robot.chassis.updateMagnitude(-0.3);
             else
-                Robot.chassis.updateMagnitude(0.2);
+                Robot.chassis.updateMagnitude(0.3);
             
             System.out.println("Change Magnitude");
 

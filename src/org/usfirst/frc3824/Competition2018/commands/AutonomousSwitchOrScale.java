@@ -119,7 +119,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
     public void homeIntakeAndElevator()
     {
         // Set intake to home position
-        addSequential(new IntakeRotate(Constants.IntakeAngleHomePosition));
+        addSequential(new IntakeRotate(Constants.IntakeAngleHomeAngle));
 
         // Adds delay which stops the intake from getting caught on elevator
         // lower
@@ -148,7 +148,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
         }
 
         // Set the elevator height, intake angle, and intake wheels to hold cube
-        initializeIntakeAndElevator(Constants.IntakeShootAngle, Constants.ElevatorSwitchPosition);
+        initializeIntakeAndElevator(Constants.IntakeAngleShootAngle, Constants.ElevatorSwitchPosition);
 
         // Drive forward to Switch
         addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveSwitchDistance, Constants.AutoSwitchOrScaleDriveSwitchPower, 0.0));
@@ -190,7 +190,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
     public void placeScale(double angle)
     {
         // Set the elevator height, intake angle, and intake wheels to hold cube
-        initializeIntakeAndElevator(Constants.IntakeShootAngle, Constants.ElevatorSwitchPosition);
+        initializeIntakeAndElevator(Constants.IntakeAngleShootAngle, Constants.ElevatorSwitchPosition);
 
         // Drive forward to Scale
         addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveScaleDistance, Constants.AutoSwitchOrScaleDriveScalePower, 0.0));
@@ -245,7 +245,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
         addSequential(new ChassisTurnAngle(0.0, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Set the elevator height, intake angle, and intake wheels to hold cube
-        initializeIntakeAndElevator(Constants.IntakeShootAngle, Constants.ElevatorScalePositionTheirs);
+        initializeIntakeAndElevator(Constants.IntakeAngleShootAngle, Constants.ElevatorScalePositionTheirs);
 
         // Drive up the field to cross the "shoot" line
         addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleDriveScaleShortDistance, Constants.AutoSwitchOrScaleDriveScaleShortPower, 0.0));
@@ -289,7 +289,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
         addSequential(new ChassisTurnAngle(angle, 0.0), Constants.ChassisTurnTimeOutTime);
 
         // Set intake in position to receive new cube
-        addParallel(new IntakeRotate(Constants.IntakePlaceAngle));
+        addParallel(new IntakeRotate(Constants.IntakeAnglePlaceAngle));
 
         // Set elevator in position to receive new cube
         addParallel(new ElevatorUpDownPosition(Constants.ElevatorCubeInPosition));
@@ -319,7 +319,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
         addSequential(new ElevatorUpDownPosition(Constants.ElevatorSwitchPosition));
 
         // Set intake in position to receive new cube
-        addParallel(new IntakeRotate(Constants.IntakeShootAngle));
+        addParallel(new IntakeRotate(Constants.IntakeAngleShootAngle));
         
         // Drive into the switch
         addSequential(new ChassisDriveDistance(0.5, -Constants.AutoSwitchOrScaleToCubePower, angle));

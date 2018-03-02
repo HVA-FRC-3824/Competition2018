@@ -215,6 +215,11 @@ public class Elevator extends Subsystem
         liftMaster.set(0);
     }
     
+    public double getCurrent()
+    {
+        return liftMaster.getOutputCurrent();
+    }
+    
     public void setElevatorPID()
     {
         elevatorPIDParamF      = SmartDashboard.getNumber("F", Constants.ElevatorPIDParamF);

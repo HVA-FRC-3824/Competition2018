@@ -53,18 +53,22 @@ public class ChangePID extends Command
         {
             case "Turn Angle":
                 Robot.chassis.setTurnAnglePID();
+                SmartDashboard.putString("PID Control", "Turn Angle");
                 break;
                 
             case "Elevator":
                 Robot.elevator.setElevatorPID();
+                SmartDashboard.putString("PID Control", "Elevator");
                 break;
                 
             case "Intake Rotator":
                 Robot.intake.setIntakeRotatePID();
+                SmartDashboard.putString("PID Control", "Intake Rotate");
                 break;
                 
             case "Intake Wheel":
                 Robot.intake.setIntakeWheelPID();
+                SmartDashboard.putString("PID Control", "Intake Wheel");
                 break;
         }
     }

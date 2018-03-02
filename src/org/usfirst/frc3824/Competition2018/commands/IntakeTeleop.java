@@ -56,7 +56,7 @@ public class IntakeTeleop extends Command
     @Override
     protected void execute()
     {
-        Robot.intake.setWheelVoltage(true, 0.2);
+        Robot.intake.setWheelVoltage(true, Constants.IntakeWheelHoldVoltage);
     }
 
     /*********************************************************************
