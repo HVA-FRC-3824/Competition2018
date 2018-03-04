@@ -1144,6 +1144,7 @@ Children:
         - !!robotbuilder.data.properties.ParameterDescriptor {name: startingPosition,
           type: String}
         - !!robotbuilder.data.properties.ParameterDescriptor {name: oneTwoCube, type: String}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: target, type: String}
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
       Parameter presets: !!robotbuilder.data.properties.ParameterSetProperty

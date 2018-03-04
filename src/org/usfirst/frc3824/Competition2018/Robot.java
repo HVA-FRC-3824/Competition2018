@@ -149,6 +149,8 @@ public class Robot extends TimedRobot
     @Override
     public void autonomousInit()
     {
+        chassis.resetNavXGyro();
+        
         String selection = autonomousCommandSelection.getSelected();
 
         switch (selection)
@@ -162,7 +164,15 @@ public class Robot extends TimedRobot
                 break;
 
             case "Switch Or Scale":
-                autonomousCommand = new AutonomousSwitchOrScale(startPositionChooser.getSelected(), oneTwoCubeChooser.getSelected());
+                autonomousCommand = new AutonomousSwitchOrScale(startPositionChooser.getSelected(),
+                                                                oneTwoCubeChooser.getSelected(),
+                                                                autonomousCommandSelection.getSelected());
+                break;
+                
+            case "Scale":
+                autonomousCommand = new AutonomousSwitchOrScale(startPositionChooser.getSelected(),
+                                                                oneTwoCubeChooser.getSelected(),
+                                                                autonomousCommandSelection.getSelected());
                 break;
             }
 
@@ -231,10 +241,10 @@ public class Robot extends TimedRobot
      *********************************************************************/
     public void showInformationOnDashboard()
     {
-//         SmartDashboard.putNumber("rightEncoder", chassis.getRightEncoder());
-//         SmartDashboard.putNumber("leftEncoder", chassis.getLeftEncoder());
-//         SmartDashboard.putNumber("rightDistance", chassis.getRightDistance());
-//         SmartDashboard.putNumber("leftDistance", chassis.getLeftDistance());
+         SmartDashboard.putNumber("rightEncoder", chassis.getRightEncoder());
+         SmartDashboard.putNumber("leftEncoder", chassis.getLeftEncoder());
+         SmartDashboard.putNumber("rightDistance", chassis.getRightDistance());
+         SmartDashboard.putNumber("leftDistance", chassis.getLeftDistance());
         
          SmartDashboard.putNumber("Elevator Error", Robot.elevator.getPID_Error());
          SmartDashboard.putNumber("Elevator MotorPercent", Robot.elevator.getMotorPercent());

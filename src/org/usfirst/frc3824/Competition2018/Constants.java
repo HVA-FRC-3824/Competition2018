@@ -63,9 +63,9 @@ public final class Constants
 
     public static double  ElevatorRPM                                 = 200;
 
-    public static double  ElevatorScalePositionTheirs                 = 66000;
+    public static double  ElevatorScalePositionTheirs                 = 64000;
     public static double  ElevatorScalePositionNeutral                = 66000;
-    public static double  ElevatorScalePositionOurs                   = 64000;
+    public static double  ElevatorScalePositionOurs                   = 54500;
     public static double  ElevatorSwitchPosition                      = 11000;
     public static double  ElevatorDownPosition                        =     0;
     public static double  ElevatorChutePosition                       = -20000;
@@ -80,8 +80,8 @@ public final class Constants
     public static double  ElevatorPIDMinimum                          = -1.0;
 
     public static double  ElevatorPIDParamF                           = 0.4;
-    public static double  ElevatorPIDParamP                           = 0.04;
-    public static double  ElevatorPIDParamI                           = 0.00007;
+    public static double  ElevatorPIDParamP                           = 0.4;
+    public static double  ElevatorPIDParamI                           = 0.0;
     public static double  ElevatorPIDParamD                           = 0.0;
 
     // ***************************************************************************************
@@ -138,8 +138,8 @@ public final class Constants
 
     public static double  AutoCenterSwitchFromWallAngle               = 45.0;    // Degrees (assumed right switch)
 
-    public static double  AutoCenterSwitchDiagonalDistance            = 6.0;     // Feet
-    public static double  AutoCenterSwitchAdditionalDistance          = 2.0;     // Feet
+    public static double  AutoCenterSwitchDiagonalDistance            = 5.0;     // Feet
+    public static double  AutoCenterSwitchAdditionalDistance          = 2.5;     // Feet
     public static double  AutoCenterSwitchDiagonalPower               = 0.8;
 
     public static double  AutoCenterSwitchToSwitchDistance            = 7.0;     // Inches
