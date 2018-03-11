@@ -288,7 +288,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
     /*********************************************************************
      * Receive second cube for 2 cube autonomous after placing on switch
      *********************************************************************/
-    public boolean getCornerCubeSwitch(boolean isRightStart)
+    public void getCornerCubeSwitch(boolean isRightStart)
     {
         double angle = -170;
         if (!isRightStart)
@@ -339,7 +339,5 @@ public class AutonomousSwitchOrScale extends CommandGroup
 
         // Release the Cube
         addSequential(new IntakeInOutTime(false, Constants.IntakeWheelShootTime, Constants.IntakeMaximumRPM));
-
-        return true;
     }
 }

@@ -809,7 +809,7 @@ Children:
           name: Parameters
           validators: null
           value:
-          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: position,
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: stepDistance,
             type: double, value: '1000'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
@@ -840,7 +840,7 @@ Children:
           name: Parameters
           validators: null
           value:
-          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: position,
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: stepDistance,
             type: double, value: '-1000'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
@@ -1409,7 +1409,8 @@ Children:
         name: Parameters
         validators: null
         value:
-        - !!robotbuilder.data.properties.ParameterDescriptor {name: position, type: double}
+        - !!robotbuilder.data.properties.ParameterDescriptor {name: stepDistance,
+          type: double}
       Run When Disabled: !!robotbuilder.data.properties.BooleanProperty {default: false,
         name: Run When Disabled, validators: null, value: false}
       Requires: !!robotbuilder.data.properties.TypeSelectionProperty {default: None,
