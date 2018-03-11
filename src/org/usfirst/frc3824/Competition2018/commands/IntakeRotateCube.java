@@ -64,22 +64,22 @@ public class IntakeRotateCube extends Command
         // Rotate the left wheel out
         if (timer.get() < Constants.IntakeWheelRotateTime1)
         {
-            Robot.intake.setRPMRight(false, Constants.IntakeWheelRotateRightRPM1);
-            Robot.intake.setRPMLeft(true, Constants.IntakeWheelRotateLeftRPM1);
+            Robot.intake.setWheelRPM_Right(false, Constants.IntakeWheelRotateRightRPM1);
+            Robot.intake.setWheelRPM_Left(true, Constants.IntakeWheelRotateLeftRPM1);
         }
        
         // Rotate the right wheel in
         else if (timer.get() < Constants.IntakeWheelRotateTime2)
         {
-            Robot.intake.setRPMRight(true, Constants.IntakeWheelRotateRightRPM2);
-            Robot.intake.setRPMLeft(true, Constants.IntakeWheelRotateLeftRPM2);    
+            Robot.intake.setWheelRPM_Right(true, Constants.IntakeWheelRotateRightRPM2);
+            Robot.intake.setWheelRPM_Left(true, Constants.IntakeWheelRotateLeftRPM2);    
         }
 
         // Rotate both wheels in
         else if (timer.get() < Constants.IntakeWheelRotateTime3)
         {
-            Robot.intake.setRPMRight(false, Constants.IntakeWheelRotateRightRPM3);
-            Robot.intake.setRPMLeft(false, Constants.IntakeWheelRotateLeftRPM3);   
+            Robot.intake.setWheelRPM_Right(false, Constants.IntakeWheelRotateRightRPM3);
+            Robot.intake.setWheelRPM_Left(false, Constants.IntakeWheelRotateLeftRPM3);   
         }
     }
 
@@ -99,7 +99,7 @@ public class IntakeRotateCube extends Command
     protected void end()
     {
         timer.stop();
-        Robot.intake.setRPM(true, 0);
+        Robot.intake.setWheelsRPM(true, 0);
     }
 
     /*********************************************************************

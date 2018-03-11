@@ -48,8 +48,7 @@ public class ElevatorUpDownPosition extends Command
     @Override
     protected void initialize()
     {
-        if (Constants.ElevatorUsePosition == true)
-            Robot.elevator.setPosition(m_position);
+        Robot.elevator.setPosition(m_position);
     }
 
     /*********************************************************************

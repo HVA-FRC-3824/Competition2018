@@ -48,7 +48,7 @@ public class ElevatorStep extends Command
     @Override
     protected void initialize()
     {     
-        Robot.elevator.setPosition(Robot.elevator.getPID_Setpoint() + m_position);
+        Robot.elevator.setPosition(Robot.elevator.getSetpoint() + m_position);
     }
 
     /*********************************************************************

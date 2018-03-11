@@ -50,7 +50,7 @@ public class IntakeInOutVoltage extends Command
     protected void initialize()
     {
         // Set the intake wheel voltage
-        Robot.intake.setWheelVoltage(m_directionIn, m_power);
+        Robot.intake.setBothWheelsVoltage(m_directionIn, m_power);
     }
 
     /*********************************************************************

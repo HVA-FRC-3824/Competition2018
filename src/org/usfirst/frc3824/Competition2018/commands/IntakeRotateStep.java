@@ -48,7 +48,7 @@ public class IntakeRotateStep extends Command
     protected void initialize()
     {
         
-        Robot.intake.setAnglePosition(Robot.intake.getPID_SetpointAngle() + m_stepTicks);
+        Robot.intake.setAnglePosition(Robot.intake.getAngleSetpoint() + m_stepTicks);
     }
 
     /*********************************************************************
@@ -57,7 +57,7 @@ public class IntakeRotateStep extends Command
     @Override
     protected void execute()
     {
-        Robot.intake.setAnglePosition(Robot.intake.getPositionAngle() + m_stepTicks);
+        Robot.intake.setAnglePosition(Robot.intake.getAnglePositionEncoder() + m_stepTicks);
     }
 
     /*********************************************************************

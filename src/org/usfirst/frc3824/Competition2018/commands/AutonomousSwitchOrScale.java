@@ -19,7 +19,10 @@ import org.usfirst.frc3824.Competition2018.Robot;
 import org.usfirst.frc3824.Competition2018.subsystems.*;
 
 /*********************************************************************
- *
+ * Autonomous command to start on the left or right and place the cube
+ * on the switch if it is active or the active scale. If the "Scale"
+ * target is set, then the robot bypassed the switch and only tries 
+ * to place on the scale.
  *********************************************************************/
 public class AutonomousSwitchOrScale extends CommandGroup
 {
@@ -82,9 +85,9 @@ public class AutonomousSwitchOrScale extends CommandGroup
             else
             {
                 // Place the cube on the opposite starting side Scale
-//                placeOppositeScale(startingPosition);
+                placeOppositeScale(startingPosition);
                 
-                addSequential(new AutonomousCrossAutoLine());
+//                addSequential(new AutonomousCrossAutoLine());
             }
         }
         else // Not able to read Game data so just drive straight to cross the auto line
@@ -173,9 +176,6 @@ public class AutonomousSwitchOrScale extends CommandGroup
             addSequential(new ChassisDriveDistance(Constants.AutoSwitchOrScaleBackUpDistance, 
                                                    Constants.AutoSwitchOrScaleBackUpPower, angle));
         }
-
-//        // TODO: Remove after complete
-//        addSequential(new Delay(5));
 
         // Set the intake and elevator to the home position for teleoperated
         // period

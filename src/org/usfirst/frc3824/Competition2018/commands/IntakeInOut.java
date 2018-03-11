@@ -51,7 +51,7 @@ public class IntakeInOut extends Command
     protected void initialize()
     {
         // Set the intake RPM and direction
-        Robot.intake.setWheelVoltage(m_directionIn, m_RPM);
+        Robot.intake.setBothWheelsVoltage(m_directionIn, m_RPM);
     }
 
     /*********************************************************************
@@ -83,7 +83,7 @@ public class IntakeInOut extends Command
     @Override
     protected void end()
     {
-        Robot.intake.stopIntake();
+        Robot.intake.stopWheels();
     }
 
     /*********************************************************************

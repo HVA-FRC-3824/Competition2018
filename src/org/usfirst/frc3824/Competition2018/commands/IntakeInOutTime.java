@@ -54,7 +54,7 @@ public class IntakeInOutTime extends Command
     protected void initialize()
     {
         // Set the intake RPM and direction
-        Robot.intake.setRPM(m_directionIn, m_RPM);
+        Robot.intake.setWheelsRPM(m_directionIn, m_RPM);
         
         // Reset and start the timer
         timer.reset();
@@ -86,7 +86,7 @@ public class IntakeInOutTime extends Command
     protected void end()
     {
         // Stop the intake wheels
-        Robot.intake.stopIntake();
+        Robot.intake.stopWheels();
         
         // Stop the timer
         timer.stop();

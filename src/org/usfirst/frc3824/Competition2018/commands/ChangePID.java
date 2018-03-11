@@ -62,12 +62,12 @@ public class ChangePID extends Command
                 break;
                 
             case "Intake Rotator":
-                Robot.intake.setIntakeRotatePID();
+                Robot.intake.setAnglePID();
                 SmartDashboard.putString("PID Control", "Intake Rotate");
                 break;
                 
             case "Intake Wheel":
-                Robot.intake.setIntakeWheelPID();
+                Robot.intake.setWheelPID();
                 SmartDashboard.putString("PID Control", "Intake Wheel");
                 break;
         }

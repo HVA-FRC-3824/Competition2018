@@ -12,13 +12,14 @@ public final class Constants
     // Intake angle constants
     // ***************************************************************************************
 
-    public static double  IntakeAngleMinimumAngle                     = -90;
-    public static double  IntakeAngleHomeAngle                        = -80;
-    public static double  IntakeAnglePickupAngle                      = -10;
-    public static double  IntakeAnglePlaceAngle                       =   0;
-    public static double  IntakeAngleShootAngle                       =  20;
     public static double  IntakeAngleMaximumAngle                     =  30;
-
+    public static double  IntakeAngleShootAngle                       =  20;
+    public static double  IntakeAnglePlaceAngle                       =   0;
+    public static double  IntakeAnglePickupAngle                      = -10;
+    public static double  IntakeAngleMinimumElevatorDown              = -20;
+    public static double  IntakeAngleHomeAngle                        = -80;
+    public static double  IntakeAngleMinimumAngle                     = -90;
+ 
     public static double  IntakeAngleEncoderYIntercept                = -9000;
     
     public static int     IntakeAngleCruiseVelocity                   = 1000;
@@ -59,15 +60,13 @@ public final class Constants
     // Elevator Constants
     // ***************************************************************************************
 
-    public static boolean ElevatorUsePosition                         = true;
-
     public static double  ElevatorRPM                                 = 200;
 
-    public static double  ElevatorScalePositionTheirs                 = 64000;
-    public static double  ElevatorScalePositionNeutral                = 66000;
-    public static double  ElevatorScalePositionOurs                   = 54500;
-    public static double  ElevatorSwitchPosition                      = 11000;
-    public static double  ElevatorDownPosition                        =     0;
+    public static double  ElevatorScalePositionTheirs                 =  64000;
+    public static double  ElevatorScalePositionNeutral                =  66000;
+    public static double  ElevatorScalePositionOurs                   =  54500;
+    public static double  ElevatorSwitchPosition                      =  11000;
+    public static double  ElevatorDownPosition                        =      0;
     public static double  ElevatorChutePosition                       = -20000;
     public static double  ElevatorCubeInPosition                      = -20000;
 
