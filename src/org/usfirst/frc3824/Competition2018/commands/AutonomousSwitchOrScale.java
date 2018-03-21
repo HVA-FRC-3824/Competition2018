@@ -187,7 +187,7 @@ public class AutonomousSwitchOrScale extends CommandGroup
      *********************************************************************/
     public void placeScale(double angle, boolean isRightStart)
     {
-        double driftAngle = 7.2; // 3 ft / 22 ft
+        double driftAngle = 0.0;  //7.2; // 3 ft / 22 ft
         
         if(isRightStart == false)
         {

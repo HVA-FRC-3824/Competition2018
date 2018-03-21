@@ -158,13 +158,13 @@ public class Chassis extends Subsystem
      *********************************************************************/
     public void driveStraightPID(double power, double angle)
     {
-        // Update the drive power
-        // Note: Used in the pidWrite method
-        m_magnitude = power;
-        
         // Drive straight means keep current heading
         startGyroPID(drivetrainDriveStraight_P, drivetrainDriveStraight_I, drivetrainDriveStraight_D, 
                      Constants.DrivetrainDriveMinimumOutput, Constants.DrivetrainDriveMaximumOutput, angle);
+        
+        // Update the drive power
+        // Note: Used in the pidWrite method
+        m_magnitude = power;
     }
 
     /*********************************************************************
@@ -172,13 +172,13 @@ public class Chassis extends Subsystem
      *********************************************************************/
     public void turnAnglePID(double desiredHeading, double power)
     {
-        // Update the drive power
-        // Note: Used in the pidWrite method
-        m_magnitude = power;
-        
         // Turn to the desired heading current heading
         startGyroPID(turnAngle_P, turnAngle_I, turnAngle_D, 
                      Constants.TurnAngle_MinimumOutput, Constants.TurnAngle_MaximumOutput, desiredHeading);
+        
+        // Update the drive power
+        // Note: Used in the pidWrite method
+        m_magnitude = power;
     }
 
     /*********************************************************************
@@ -201,7 +201,7 @@ public class Chassis extends Subsystem
     }
 
     /*********************************************************************
-     * Method to return the maximum of the two chassas wheel encoders
+     * Method to return the maximum of the two chassis wheel encoders
      *********************************************************************/
     public double getEncoderDistance()
     {

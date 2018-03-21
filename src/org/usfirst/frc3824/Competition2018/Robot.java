@@ -274,11 +274,13 @@ public class Robot extends TimedRobot
          SmartDashboard.putNumber("Intake Right MotorPercent",  intake.getWheelMotorPercentRight());
          SmartDashboard.putNumber("Intake Right Setpoint",      intake.getWheelSetpointRight());
          SmartDashboard.putNumber("Intake Right Velocity",      intake.getWheelVelocityRight());
+         SmartDashboard.putNumber("Intake Right Current",       intake.getWheelCurrentRight());
          
          SmartDashboard.putNumber("Intake Left Error",          intake.getWheelErrorLeft());
          SmartDashboard.putNumber("Intake Left MotorPercent",   intake.getWheelMotorPercentLeft());
          SmartDashboard.putNumber("Intake Left Setpoint",       intake.getWheelSetpointLeft());
          SmartDashboard.putNumber("Intake Left Velocity",       intake.getWheelVelocityLeft());
+         SmartDashboard.putNumber("Intake Left Current",        intake.getWheelCurrentRight());
         
          SmartDashboard.putNumber("UltraSonic Distance Inches", chassis.getUltrasonicDistance());
         

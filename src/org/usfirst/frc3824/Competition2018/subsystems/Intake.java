@@ -66,7 +66,8 @@ public class Intake extends Subsystem
         /**********************************************************************************/
         left.set(ControlMode.Velocity, 0);
         left.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
-        left.setSensorPhase(false);
+        left.setSensorPhase(true);
+        left.setInverted(false);
 
         left.configClosedloopRamp(0, Constants.TalonInitialCommunicationTimeout);
 
@@ -85,7 +86,8 @@ public class Intake extends Subsystem
         /**********************************************************************************/
         right.set(ControlMode.Velocity, 0);
         right.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
-        right.setInverted(true);
+        right.setSensorPhase(false);
+        right.setInverted(false);
 
         right.configClosedloopRamp(0, Constants.TalonInitialCommunicationTimeout);
 
@@ -106,7 +108,7 @@ public class Intake extends Subsystem
         
         angle.set(ControlMode.MotionMagic, 0);
         angle.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
-        angle.setSensorPhase(false);
+        angle.setSensorPhase(true);
               
         angle.configNominalOutputForward(0, Constants.TalonInitialCommunicationTimeout);
         angle.configNominalOutputReverse(0, Constants.TalonInitialCommunicationTimeout);
@@ -194,6 +196,14 @@ public class Intake extends Subsystem
     {
         return right.getSelectedSensorPosition(0);
     }
+    
+    /*********************************************************************
+     *  Returns current current of right intake controller
+     *********************************************************************/
+    public double getWheelCurrentRight()
+    {
+        return right.getOutputCurrent();
+    }
 
     /*********************************************************************
     * Resets right intake sensor encoder value to 0
@@ -250,7 +260,15 @@ public class Intake extends Subsystem
     {
         return left.getSelectedSensorPosition(0);
     }
-
+    
+    /*********************************************************************
+     *  Returns current current of left intake controller
+     *********************************************************************/
+    public double getWheelCurrentLeft()
+    {
+        return left.getOutputCurrent();
+    }
+    
     /*********************************************************************
     * Resets left intake sensor encoder value to 0
     *********************************************************************/
@@ -337,6 +355,26 @@ public class Intake extends Subsystem
         
         // Remember the intake wheel PID set point
         intakeWheelLeftSetpoint = targetVelocity;
+    }
+    
+    public void setWheelVoltageRight(boolean direction, double power)
+    {
+        // Determine the wheel direction
+        if (direction == true)
+            power = -power;
+
+        // Set the wheel PID velocity setpoint
+        right.set(ControlMode.PercentOutput, power);
+    }
+    
+    public void setWheelVoltageLeft(boolean direction, double power)
+    {
+        // Determine the wheel direction
+        if (direction == true)
+            power = -power;
+
+        // Set the wheel PID velocity setpoint
+        left.set(ControlMode.PercentOutput, power);
     }
     
     /*********************************************************************

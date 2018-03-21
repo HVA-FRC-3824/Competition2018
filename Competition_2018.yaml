@@ -15,7 +15,7 @@ Children:
           validators: &id002 [DigitalChannel]
           value: '0'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 0.0065789}
+          name: Distance Per Pulse, validators: null, value: 0.00454545}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: &id003 [kDisplacement, kRate]
           default: kRate
@@ -49,7 +49,7 @@ Children:
           validators: *id002
           value: '2'
         Distance Per Pulse: !!robotbuilder.data.properties.DoubleProperty {default: 1,
-          name: Distance Per Pulse, validators: null, value: 0.0065789}
+          name: Distance Per Pulse, validators: null, value: 0.00454545}
         PID Source: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id003
           default: kRate
@@ -682,37 +682,6 @@ Children:
           validators: null
           value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: stepTicks,
-            type: double, value: '500'}
-        Button: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id014
-          default: '1'
-          name: Button
-          validators: null
-          value: '12'
-        Command: !!robotbuilder.data.properties.TypeSelectionProperty
-          default: None
-          name: Command
-          type: Command
-          validators: *id015
-          value: IntakeRotateStep
-        When to Run: !!robotbuilder.data.properties.ChoicesProperty
-          choices: *id016
-          default: whileHeld
-          name: When to Run
-          validators: null
-          value: whenPressed
-      Base: Joystick Button
-      Name: IntakeRotateStepUp
-    - Children: []
-      Properties:
-        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
-          name: Joystick, validators: null, value: ButtonPanel}
-        Parameters: !!robotbuilder.data.properties.ParametersProperty
-          default: []
-          name: Parameters
-          validators: null
-          value:
-          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: stepTicks,
             type: double, value: '-500'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
@@ -743,10 +712,41 @@ Children:
           name: Parameters
           validators: null
           value:
+          - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: stepTicks,
+            type: double, value: '500'}
+        Button: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id014
+          default: '1'
+          name: Button
+          validators: null
+          value: '12'
+        Command: !!robotbuilder.data.properties.TypeSelectionProperty
+          default: None
+          name: Command
+          type: Command
+          validators: *id015
+          value: IntakeRotateStep
+        When to Run: !!robotbuilder.data.properties.ChoicesProperty
+          choices: *id016
+          default: whileHeld
+          name: When to Run
+          validators: null
+          value: whenPressed
+      Base: Joystick Button
+      Name: IntakeRotateStepUp
+    - Children: []
+      Properties:
+        Joystick: !!robotbuilder.data.properties.ParentProperty {default: parent,
+          name: Joystick, validators: null, value: ButtonPanel}
+        Parameters: !!robotbuilder.data.properties.ParametersProperty
+          default: []
+          name: Parameters
+          validators: null
+          value:
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: directionIn,
             type: boolean, value: 'true'}
           - !!robotbuilder.data.properties.ValuedParameterDescriptor {name: RPM, type: double,
-            value: '0.4'}
+            value: '0.6'}
         Button: !!robotbuilder.data.properties.ChoicesProperty
           choices: *id014
           default: '1'
@@ -1665,7 +1665,7 @@ Children:
         validators: null
         value: []
       Button on SmartDashboard: !!robotbuilder.data.properties.BooleanProperty {default: true,
-        name: Button on SmartDashboard, validators: null, value: false}
+        name: Button on SmartDashboard, validators: null, value: true}
     Base: Command
     Name: IntakeRotateCube
   - Children: []

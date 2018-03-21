@@ -60,7 +60,7 @@ public class Elevator extends Subsystem
         liftMaster.set(ControlMode.MotionMagic, 0);
         
         liftMaster.configSelectedFeedbackSensor(FeedbackDevice.CTRE_MagEncoder_Relative, 0, Constants.TalonInitialCommunicationTimeout);
-        liftMaster.setSensorPhase(true);
+        liftMaster.setSensorPhase(false);
         
         liftMaster.configClosedloopRamp(0, Constants.TalonInitialCommunicationTimeout);
 
@@ -131,13 +131,13 @@ public class Elevator extends Subsystem
         // Determine the angle of the intake
         intake_angle = Robot.intake.getAnglePosition();
         
-        // Ensure the elevator move does not cause a collision of the intake with the robot
-        if ((position < Constants.ElevatorDownPosition) && (intake_angle < Constants.IntakeAngleMinimumElevatorDown))
-            position = Constants.ElevatorDownPosition;
-  
-        // Ensure the elevator move does not cause a collision of the intake motor with the elevator components
-        if ((position > Constants.ElevatorDownPosition) && (intake_angle > Constants.IntakeAngleMaximumAngle))
-            position = Constants.ElevatorDownPosition;
+//        // Ensure the elevator move does not cause a collision of the intake with the robot
+//        if ((position < Constants.ElevatorDownPosition) && (intake_angle < Constants.IntakeAngleMinimumElevatorDown))
+//            position = Constants.ElevatorDownPosition;
+//  
+//        // Ensure the elevator move does not cause a collision of the intake motor with the elevator components
+//        if ((position > Constants.ElevatorDownPosition) && (intake_angle > Constants.IntakeAngleMaximumAngle))
+//            position = Constants.ElevatorDownPosition;
         
         // Set the elevator velocity PID setpoint
         liftMaster.set(ControlMode.MotionMagic, position);
